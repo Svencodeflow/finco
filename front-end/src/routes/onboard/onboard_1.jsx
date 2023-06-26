@@ -1,5 +1,6 @@
 import React from "react";
 import "../../style/onboard.css";
+
 import bankcard from "./../../images/bankcard.png";
 
 export default function onboard_1() {
