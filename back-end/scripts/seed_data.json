@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "name": "Sven",
+      "email": "sven@supercode.com",
+      "password": "1234"
+    },
+    {
+      "name": "Kevin",
+      "email": "kevin@supercode.com",
+      "password": "5678"
+    },
+    {
+      "name": "Manuel",
+      "email": "manuel@supercode.com",
+      "password": "3456"
+    }
+  ]
+}
