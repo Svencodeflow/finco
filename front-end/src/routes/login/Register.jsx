@@ -1,16 +1,20 @@
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import "../../style/register.css";
+import Logo from "../../images/Logo.svg";
 
 export default function Register() {
     const navigate = useNavigate(); // get the navigate function
     const location = useLocation(); // get the location object
     const handleClick = () => {
-        navigate("/accsetup"); // navigate to the relative path
+        navigate("/accset"); // navigate to the relative path
         console.log(location.pathname); // log the current path
     };
 
     return (
         <div id="register">
+            <div className="register_logo">
+                <img src={Logo} alt="logo" />
+            </div>
             <div className="register_text">
                 <h2>Create an account</h2>
                 <p>
@@ -21,41 +25,58 @@ export default function Register() {
             <div className="register_form">
                 <form>
                     <div className="register_form_input">
-                        <label htmlFor="name">Name</label>
                         <div>
-                            <input type="text" id="name" />
+                            <input
+                                type="text"
+                                id="name"
+                                required
+                                placeholder="Name"
+                            />
                         </div>
 
-                        <label htmlFor="email">Email</label>
                         <div>
-                            <input type="email" id="email" />
+                            <input
+                                type="email"
+                                id="email"
+                                required
+                                placeholder="Email"
+                            />
                         </div>
 
-                        <label htmlFor="password">Password</label>
                         <div>
-                            <input type="password" id="password" />
+                            <input
+                                type="password"
+                                id="password"
+                                required
+                                placeholder="Password"
+                            />
                         </div>
 
-                        <label htmlFor="password">Confirm Password</label>
                         <div>
-                            <input type="password" id="password" />
+                            <input
+                                type="password"
+                                id="password"
+                                required
+                                placeholder="Confirm Password"
+                            />
                         </div>
-
-                        <label htmlFor="Terms & Service">
-                            Agree to Terms & Service
-                        </label>
-                        <div>
-                            <input type="checkbox" id="Terms & Service" />
+                        <div className="terms">
+                            <input type="checkbox" id="terms" required />
+                            <label htmlFor="terms">
+                                Agree to <span>Terms & Service</span>
+                            </label>
                         </div>
                     </div>
                     <div className="register_form_btn">
-                        <button onClick={handleClick}>Register Now</button>
+                        <button type="submit" onClick={handleClick}>
+                            Register Now
+                        </button>
                     </div>
                 </form>
             </div>
             <div className="register_text">
                 <p>
-                    All ready have any account? <a href="#">Login</a>
+                    All ready have any account? <Link to={"/login"}>Login</Link>
                 </p>
             </div>
         </div>
