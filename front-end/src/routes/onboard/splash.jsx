@@ -1,10 +1,14 @@
 import React from "react";
 import Logo from "../../images/logo.png";
 import "../../style/splash.css";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Splash() {
+    const navigate = useNavigate(); // get the navigate function
+    const location = useLocation(); // get the location object
     const handleClick = () => {
-        window.location.href = "/onboard";
+        navigate("/Onboard1"); // navigate to the relative path
+        console.log(location.pathname); // log the current path
     };
 
     return (

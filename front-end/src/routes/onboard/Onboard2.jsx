@@ -3,7 +3,7 @@ import "./../../style/onboard.css";
 import card from "./../../images/giftcard.svg";
 import { Link } from "react-router-dom";
 
-export default function onboard_2() {
+export default function Onboard2() {
     return (
         <div id="onboard_1">
             <div className="onboard_1_img">

@@ -3,7 +3,7 @@ import "./../../style/onboard.css";
 import bankcard from "./../../images/onboard_bank.png";
 import { Link } from "react-router-dom";
 
-export default function onboard_1() {
+export default function Onboard1() {
     return (
         <div id="onboard_1">
             <div className="onboard_1_img">
@@ -23,7 +23,7 @@ export default function onboard_1() {
                     </Link>
                 </div>
                 <div>
-                    <Link to="/onboard_1">
+                    <Link to="/Onboard2">
                         <button>
                             Next<span>&#8594;</span>
                         </button>
