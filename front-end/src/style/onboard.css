@@ -1,0 +1,79 @@
+#onboard_1 {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.onboard_1_text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#onboard_1 h1 {
+    font-size: 2rem;
+    width: 60vw;
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+    color: #000;
+    text-align: center;
+}
+
+#onboard_1 p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+    text-align: center;
+    width: 90vw;
+    color: #000;
+}
+
+.onboard_1_btn {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 5rem;
+    width: 100%;
+}
+
+#onboard_1 button {
+    font-size: 1.5rem;
+    font-weight: 400;
+    padding: 1rem 3rem;
+    border-radius: 50px;
+    border: none;
+    background-color: #1e90ff;
+    color: #fff;
+    cursor: pointer;
+}
+
+#onboard_1 button:hover {
+    background-color: #1e90ff;
+    color: #ff0000;
+}
+
+.onboard_skip {
+    font-size: 1.5rem;
+    color: #000000;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.onboard_1_btn a {
+    text-decoration: none;
+}
+
+span {
+    margin: 0 auto;
+    margin-left: 35px;
+}
+
+/* Path: front-end\src\style\onboard.css */
+
+#onboard_2 {
+    color: #000;
+}
