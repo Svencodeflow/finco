@@ -7,7 +7,7 @@ import Root from "./routes/root";
 import Splash from "./routes/onboard/splash";
 import Onboard1 from "./routes/onboard/Onboard1.jsx";
 import Onboard2 from "./routes/onboard/Onboard2.jsx";
-import Register from "./routes/login/register";
+import Register from "./routes/login/Register";
 
 const router = createBrowserRouter([
     {
