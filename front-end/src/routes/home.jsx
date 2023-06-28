@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import './style/home.css';
-import { Link } from 'react-router-dom';
+import './App.css';
 
 
 
@@ -21,23 +20,28 @@ function App() {
         </div>
 
         <h3>Total wallet</h3>
-
+        <div className='flex'>
+          
         <div className="income">
-        <img src="/images/income.png" alt="income" />
+        <img src=".\images" alt="income" />
           <p>Income</p>
           {/* Platzhalter income */}
+          <p>+50000</p>
         </div>
 
         <div className="expense">
         <img src="/images/expense.png" alt="expense" />
           <p>Expense</p>
           {/* Platzhalter expense */}
+          <p>+50000</p>
         </div>
 
         <div className="monthlyLimit">
         <img src="/images/monthly.png" alt="monthly" />
         <p>Monthly spending limit</p>
           {/* Platzhalter monthly */}
+          <p>+50000</p>
+        </div>
         </div>
     </main>
     
