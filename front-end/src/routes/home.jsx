@@ -11,6 +11,7 @@ function App() {
       <header>
         <h1>Welcome back</h1>
         {/* Platzhalter Name */}
+        <img src="/images/profilpic.png" alt="profilpic" />
       </header>
 
       <main className="wallet">

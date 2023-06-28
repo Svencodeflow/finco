@@ -1,12 +1,10 @@
 
 main {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: left;
-   margin-left: 20px;
-   margin-right: 50px;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   }
   
   header {
@@ -29,11 +27,11 @@ main {
       }
       
       .income { grid-area: 1 / 1 / 2 / 2; 
-      background-color: grey;}
+      background-color: rgb(208, 208, 208);}
       .expense { grid-area: 1 / 2 / 2 / 3;
-      background-color: grey; }
+      background-color: rgb(208, 208, 208); }
       .monthlyLimit { grid-area: 2 / 1 / 3 / 3;
-      background-color: grey; }
+      background-color: rgb(208, 208, 208)y; }
   
   
   

@@ -1,45 +1,84 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from "react";
+import { AiFillCloseCircle } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
-function App() {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [searchResults, setSearchResults] = useState([]);
 
-  const data = [
-    'Apple',
-    'Banana',
-    'Orange',
-    'Mango',
-    'Pineapple',
-    'Grapes',
-    'Watermelon',
-  ];
+const Search = ({
+  setShowCategories,
+  setShowResult,
+  setShowDetails,
+  setShowRandom = () => {},
+}) => {
+  const [search, setSearch] = useState("");
+  const [products, setProducts] = useState([]);
+  const [filtered, setFiltered] = useState([]);
 
-  const handleSearch = (event) => {
-    const searchTerm = event.target.value;
-    setSearchTerm(searchTerm);
+  useEffect(() => {
+    if (products) {
+      setTimeout(() => {
+        const filteredProducts = products.filter((product) => {
+          return (
+            product.strMeal.toLowerCase().includes(search.toLowerCase()) ||
+            product.strArea.toLowerCase().includes(search.toLowerCase()) ||
+            (product.strTags &&
+              product.strTags.toLowerCase().includes(search.toLowerCase())) ||
+            product.strCategory.toLowerCase().includes(search.toLowerCase())
+          );
+        });
+        setFiltered(filteredProducts);
+      }, 500);
+    }
+  }, [search, products]);
 
-    const filteredData = data.filter((item) =>
-      item.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setSearchResults(filteredData);
+  const reloadPage = () => {
+    window.location.reload();
+  };
+
+  const handleClick = () => {
+    const audio = new Audio(clickSound);
+    audio.play();
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Search"
-        value={searchTerm}
-        onChange={handleSearch}
-      />
+    <div className="search-page">
+        <div>
+          <section>
+            <input
+              type="text"
+              placeholder="Search..."
+              onChange={(event) => {
+                setSearch(event.target.value);
+                setShowCategories(false);
+                setShowResult(false);
+                setShowDetails(false);
+                setShowRandom(false);
+              }}
+              value={search}
+              onClick={handleClick}
+            />
 
-      <ul>
-        {searchResults.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
+            <AiFillCloseCircle
+              className="close-icon"
+              size={30}
+              onClick={reloadPage}
+            />
+          </section>
+
+          <section>
+            {search &&
+              filtered.map((product) => {
+                return (
+                  <ProductItems
+                   // selektion
+                  />
+                );
+              })}
+          </section>
+        </div>
+
     </div>
-  );
-}
+    
 
-export default App;
+  );
+};
+export default Search;
