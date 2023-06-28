@@ -8,6 +8,7 @@ import Splash from "./routes/onboard/splash";
 import Onboard1 from "./routes/onboard/Onboard1.jsx";
 import Onboard2 from "./routes/onboard/Onboard2.jsx";
 import Register from "./routes/login/Register";
+import Login from "./routes/login/Login";
 import Accset from "./routes/login/Accset";
 
 const router = createBrowserRouter([
@@ -34,6 +35,11 @@ const router = createBrowserRouter([
     {
         path: "/register",
         element: <Register />,
+        errorElement: <ErrorPage />,
+    },
+    {
+        path: "/login",
+        element: <Login />,
         errorElement: <ErrorPage />,
     },
     {
