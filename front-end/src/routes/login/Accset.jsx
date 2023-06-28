@@ -13,7 +13,7 @@ export default function Accset() {
     };
 
     // replace img src="placeholder" with your own image
-    const [src, setSrc] = useState("https://example.com/image.jpg");
+    const [src, setSrc] = useState("https://unsplash.it/200/200");
 
     const handleImageUpload = async () => {
         const file = e.target.files[0];
