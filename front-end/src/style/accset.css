@@ -1,0 +1,56 @@
+#accset {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.accset_logo {
+    position: absolute;
+    top: 30px;
+    left: 0;
+}
+
+.accset_text {
+    margin-top: 20vh;
+}
+
+.accset_profil_text h4 {
+    margin-top: 2vh;
+    color: #000;
+}
+
+.accset_profil_img img {
+    width: 80vw;
+    height: 40vh;
+    border: 2px solid #000;
+}
+
+.accset_profil_button img {
+    position: absolute;
+    top: 480px;
+    left: 35px;
+    border: none;
+}
+
+.accset_form_input input {
+    margin-top: 5vh;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 40px;
+    background-color: antiquewhite;
+    margin-bottom: 6vh;
+}
+
+.accset_btn button {
+    font-size: 1.5rem;
+    font-weight: 400;
+    padding: 1rem 3rem;
+    border-radius: 50px;
+    border: none;
+    background-color: #1e90ff;
+    color: #fff;
+    cursor: pointer;
+}
