@@ -9,7 +9,10 @@ function App() {
     <>
       <div>
         <header>
-       
+     
+                <img src={Logo} alt="logo" />
+                <img src={profil_logo} alt="profil_logo" />
+            
         </header>
 
         <main>
