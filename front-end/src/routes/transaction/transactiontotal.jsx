@@ -14,7 +14,7 @@ function App() {
 
         <main>
           <div>
-            <h1>Alle Transaktionen</h1>
+            <h1>All Transaction </h1>
           </div>
           <div className="income">
             <img src="/images/income.png" alt="Income" />
