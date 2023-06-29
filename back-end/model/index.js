@@ -1,11 +1,15 @@
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+export default mongoose;
 
-// Import the User model from the User.js file
 export { User } from "./User.js";
+export { Post } from "./Post.js";
+export {
+  ResetToken,
+  createResetToken,
+  validateResetToken,
+} from "./ResetToken.js";
 
-// Load the environment variables from the .env file
 dotenv.config({ path: new URL("../../.env", import.meta.url).pathname });
 
-// Connect to MongoDB
 mongoose.connect(process.env.DB);
