@@ -11,7 +11,7 @@ function App() {
       <header>
         <h1>Welcome back</h1>
         {/* Platzhalter Name */}
-        <img src="/images/profilpic.png" alt="profilpic" />
+        <img src="/images/profil_logo" alt="profil_logo" />
       </header>
 
       <main className="wallet">
@@ -22,7 +22,6 @@ function App() {
 
         <h3>Total wallet</h3>
         <div className='flex'>
-          
         <div className="income">
         <img src=".\images" alt="income" />
           <p>Income</p>
