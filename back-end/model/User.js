@@ -10,12 +10,22 @@ const userSchema = new mongoose.Schema({
 
 // set password | only use function expressions instead of arrow functions
 userSchema.methods.setPassword = function (password) {
-  // Salt erstellen
+  // create salt
   this.salt = crypto.randomBytes(64).toString("hex");
-  // Password mit salt hashen
+  // hash password with salt
   this.hash = crypto
     .pbkdf2Sync(password, this.salt, 1000, 64, "sha512")
     .toString("hex");
 };
+
+// verifyPassword
+userSchema.methods.verifyPassword = function (password) {
+  const hash = crypto
+    .pbkdf2Sync(password, this.salt, 1000, 64, "sha512")
+    .toString("hex");
+
+  return this.hash === hash;
+};
+
 
 export const User = mongoose.model("User", userSchema);
