@@ -1,8 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
-import { User } from "./model/index.js";
+import { User, createResetToken } from "./model/index.js";
 import { authenticateToken, generateAccessToken } from "./lib/jwt.js";
 import cookieParser from "cookie-parser";
+import { sendMail } from "./lib/email.js";
 
 dotenv.config({ path: new URL("../.env", import.meta.url).pathname });
 
@@ -10,6 +11,7 @@ const PORT = process.env.BE_PORT || 3000;
 const app = express();
 
 app.use(express.json()); //jasonParser to a js object
+app.use(express.json());
 app.use(cookieParser());
 
 app.get("/api/status", (req, res) => {
@@ -61,7 +63,7 @@ app.post("/api/login", async (req, res) => {
     return res
       .status(401)
       .send({ error: { message: "Email and password combination is wrong!" } });
-  }
+  };
 
   // compare password with user.verifyPassword
   const isVerified = user.verifyPassword(req.body.password);
@@ -69,23 +71,43 @@ app.post("/api/login", async (req, res) => {
     const token = generateAccessToken({ email });
     res.cookie("auth", token, { httpOnly: true, maxAge: 1000 * 60 * (60 * 24) });
     return res.send({ data: { token } });
-  }
+  };
 
   res
     .status(401)
     .send({ error: { message: "Email and password combination is wrong!" } });
 });
 
-//--------------VERIFIY EMAIL--------------\\
+//--------------VERIFIY-EMAIL--------------\\
 app.get("/api/verified", authenticateToken, async (req, res) => {
   const user = await User.findOne({ email: req.userEmail });
   res.send(user);
+  console.log({ user });
 });
 
 //--------------LOGOUT--------------\\
 app.get("/api/logout", (req, res) => {
   res.clearCookie("auth");
   res.send("Logged out");
+});
+
+//--------------RESET-PASSWORD--------------\\
+app.post("/api/resetPassword", async (req, res) => {
+  const { email } = req.body;
+
+  if (!email) {
+    return res.status(400).send({ error: "Define an email to reset password" });
+  };
+
+  const user = await User.findOne({ email });
+
+  res.send({ message: `Password reset email send for: ${email}`, email });
+
+  if (user) {
+    await createResetToken(user);
+  };
+
+  console.log({ email }, { user });
 });
 
 app.get("/*", (req, res) => {
