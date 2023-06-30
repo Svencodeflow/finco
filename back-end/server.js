@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import { User } from "./model/index.js";
-import { generateAccessToken } from "./lib/jwt.js";
+import { authenticateToken, generateAccessToken } from "./lib/jwt.js";
 import cookieParser from "cookie-parser";
 
 dotenv.config({ path: new URL("../.env", import.meta.url).pathname });
@@ -74,6 +74,12 @@ app.post("/api/login", async (req, res) => {
   res
     .status(401)
     .send({ error: { message: "Email and password combination is wrong!" } });
+});
+
+//--------------VERIFIY EMAIL--------------\\
+app.get("/api/verified", authenticateToken, async (req, res) => {
+  const user = await User.findOne({ email: req.userEmail });
+  res.send(user);
 });
 
 app.get("/*", (req, res) => {
