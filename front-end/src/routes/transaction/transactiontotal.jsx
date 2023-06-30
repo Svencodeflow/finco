@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import './style/home.css';
+import Logo from './assets/Logo.svg';
+import profil_logo from './assets/profil_logo.svg';
+import income from './assets/income.svg';
+import expense from './assets/expense.svg';
 
 
 function App() {
