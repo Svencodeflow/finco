@@ -9,10 +9,8 @@ function App() {
     <>
       <div>
         <header>
-     
-                <img src={Logo} alt="logo" />
-                <img src={profil_logo} alt="profil_logo" />
-            
+        <img src={Logo} alt="Logo" />
+        <img src={profil_logo} alt="profil_logo" />
         </header>
 
         <main>
@@ -21,6 +19,7 @@ function App() {
           </div>
           <div className="income">
             <img src="/images/income.png" alt="Income" />
+            <img src={income} alt="Income" />
             <p>Income</p>
             {/* Platzhalter Einnahmen */}
           </div>
