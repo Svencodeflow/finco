@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
-import './App.css';
-
+import './home.css';
+import kreditcardbluefinal from './assets/kreditcardbluefinal.svg';
+import income from './assets/income.svg';
+import expense from './assets/expense.svg';
+import monthly from './assets/monthly.svg';
+import profil_logo from './assets/profil_logo.svg';
 
 
 function App() {
