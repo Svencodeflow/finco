@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './style/home.css';
-import Logo from './assets/Logo.svg';
-import profil_logo from './assets/profil_logo.svg';
-import income from './assets/income.svg';
-import expense from './assets/expense.svg';
+import Logo from './images/Logo.svg';
+import profil_logo from './images/profil_logo.svg';
+import income from './images/income.png';
+import expense from './images/expense.png';
 
 
 function App() {
@@ -22,14 +22,13 @@ function App() {
             <h1>All Transaction </h1>
           </div>
           <div className="income">
-            <img src="/images/income.png" alt="Income" />
             <img src={income} alt="Income" />
             <p>Income</p>
             {/* Platzhalter Einnahmen */}
           </div>
 
           <div className="expense">
-            <img src="/images/expense.png" alt="Expense" />
+          <img src={expense} alt="expense" />
             <p>Expense</p>
             {/* Platzhalter Ausgaben */}
 
