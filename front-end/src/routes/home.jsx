@@ -7,7 +7,7 @@ import income from './images/income.png';
 import expense from './images/expense.png';
 import monthly from './images/monthly.png';
 import profil_logo from './images/profil_logo.svg';
-import footernav from './routes/transaction/footernav.jsx';
+
 
 
 function App() {
