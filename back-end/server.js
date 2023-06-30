@@ -82,6 +82,12 @@ app.get("/api/verified", authenticateToken, async (req, res) => {
   res.send(user);
 });
 
+//--------------LOGOUT--------------\\
+app.get("/api/logout", (req, res) => {
+  res.clearCookie("auth");
+  res.send("Logged out");
+});
+
 app.get("/*", (req, res) => {
   res.sendFile(ReactAppIndex.pathname);
 });
