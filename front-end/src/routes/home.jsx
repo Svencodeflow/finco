@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import 'semantic-ui-css/semantic.min.css'
 import './home.css';
 import kreditcardbluefinal from './assets/kreditcardbluefinal.svg';
-import income from './assets/income.svg';
-import expense from './assets/expense.svg';
-import monthly from './assets/monthly.svg';
-import profil_logo from './assets/profil_logo.svg';
+import income from './images/income.svg';
+import expense from './images/expense.svg';
+import monthly from './images/monthly.svg';
+import profil_logo from './images/profil_logo.svg';
 
 
 function App() {
@@ -52,9 +53,8 @@ function App() {
     </main>
     
     <footer className="footerNav">
-
-
-      </footer>
+      <FooterNavbar />
+    </footer>
   </div>
   );
 }

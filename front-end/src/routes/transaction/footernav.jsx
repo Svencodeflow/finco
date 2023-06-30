@@ -1,29 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import home from '../../assets/home.svg';
-import alltransact from '../../assets/alltransact.svg';
-import report from '../../assets/report.svg';
+import home from '../../images/home.svg';
+import alltransact from '../../images/alltransact.svg';
+import report from '../../images/report.svg';
 import './footernav.css';
 
-
-
-const NavItem = ({ text }) => {
-  return <li>{text}</li>;
-};
-
-const FooterNavbar = () => {
-  return (
-    <nav>
-      <ul>
-        <NavItem text="Home" />
-        <NavItem text="About" />
-        <NavItem text="Services" />
-        <NavItem text="Contact" />
-        <NavItem text="FAQ" />
-      </ul>
-    </nav>
-  );
-};
 
 
 function App() {
