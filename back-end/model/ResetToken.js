@@ -58,10 +58,14 @@ export const createResetToken = async (user) => {
   });
 };
 
+//--------------VALIDATE-RESET-TOKEN--------------\\
 export const validateResetToken = async (userId, resetToken) => {
   const passwordResetToken = await ResetToken.findOne({ userId })
     .populate("userId")
     .catch(console.error);
+
+  console.log({ ResetToken });
+  console.log({ passwordResetToken });
 
   if (!passwordResetToken) {
     console.log("no token found");
@@ -77,3 +81,4 @@ export const validateResetToken = async (userId, resetToken) => {
 
   return passwordResetToken.userId;
 };
+console.log({ validateResetToken });

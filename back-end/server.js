@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import { User, createResetToken } from "./model/index.js";
+import { User, createResetToken, validateResetToken } from "./model/index.js";
 import { authenticateToken, generateAccessToken } from "./lib/jwt.js";
 import cookieParser from "cookie-parser";
 import { sendMail } from "./lib/email.js";
@@ -25,7 +25,7 @@ app.post("/api/signup", async (req, res) => {
   const newUser = new User({ name, email });
   // user.setPassword (set hash and salt)
   newUser.setPassword(req.body.password);
-  
+
   // save user
   try {
     await newUser.save();
@@ -108,6 +108,23 @@ app.post("/api/resetPassword", async (req, res) => {
   };
 
   console.log({ email }, { user });
+});
+
+//--------------SET-PASSWORD--------------\\
+app.post("/api/setpassword", async (req, res) => {
+  const { token, password, id } = req.body;
+
+  try {
+    const user = await validateResetToken(id, token);
+    user.setPassword(password);
+    await user.save();
+    return res.send({ message: "Password updated" });
+  } catch (error) {
+    if (error.message) {
+      return res.status(500).send(error.message);
+    }
+    return res.status(500).send("Unknown error");
+  }
 });
 
 app.get("/*", (req, res) => {
