@@ -5,6 +5,7 @@ import { User } from "./User.js";
 import { sendMail } from "../lib/email.js";
 import { passwortResetTemplate } from "../lib/emailTemplates.js";
 
+//--------------RESET-TOKEN-SCHEMA--------------\\
 const tokenSchema = new Schema({
   userId: {
     type: Schema.Types.ObjectId,
@@ -18,14 +19,16 @@ const tokenSchema = new Schema({
   createdAt: {
     type: Date,
     default: Date.now,
-    expires: 3600, // this is the expiry time in seconds
+    expires: 3600,
   },
 });
 
 export const ResetToken = model("ResetToken", tokenSchema);
 
+//--------------CREATE-RESET-TOKEN--------------\\
 export const createResetToken = async (user) => {
   let token = await ResetToken.findOne({ userId: user._id });
+
   if (token) await token.deleteOne();
 
   let resetToken = crypto.randomBytes(32).toString("hex");
@@ -50,7 +53,7 @@ export const createResetToken = async (user) => {
 
   await sendMail({
     to: [user.email],
-    subject: "SuperApp: Password Reset",
+    subject: "Finco: Password Reset",
     html: mailHTML,
   });
 };
