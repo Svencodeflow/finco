@@ -7,12 +7,13 @@
   margin: 0px 0px 0px 20px;
 }
 
-main {
-  justify-content: space-between;
-}
 h1 {
   font-size: 1rem;
  
+}
+
+main {
+  justify-content: space-between;
 }
 
   section{
@@ -21,10 +22,9 @@ h1 {
 }
 
 #kreditcard 
-{
-  margin-top: 2rem;
+{justify-content: center;
   margin-left: 20px;
-  margin-right: 20px;
-  margin-bottom: 2rem;
+  margin-right: 30px;
+  margin-bottom: 1rem;
   padding: 1rem;
 }
