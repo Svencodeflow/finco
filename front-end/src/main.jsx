@@ -14,6 +14,7 @@ import Onboard2 from "./routes/onboard/Onboard2.jsx";
 import Register from "./routes/login/Register";
 import Login from "./routes/login/Login";
 import Accset from "./routes/login/Accset";
+import Setting from "./routes/Accountsetting";
 
 // addTransaction Screens
 import Addtransaction from "./routes/addtransaction/Addtransaction";
@@ -80,6 +81,11 @@ const router = createBrowserRouter([
     {
         path: "/reports",
         element: <Reports />,
+        errorElement: <ErrorPage />,
+    },
+    {
+        path: "/accountsetting",
+        element: <Setting />,
         errorElement: <ErrorPage />,
     },
 ]);

@@ -1,9 +1,9 @@
 import React from "react";
-import Back from "../images/profil_logo.svg";
 import Profil from "../images/profilpic.png";
 import income from "../images/income.png";
 import incomeMoney from "../images/Back.svg";
 import Expenses from "../images/expense.png";
+import Back from "../images/Logo.svg";
 import {
     AreaChart,
     XAxis,
@@ -12,6 +12,11 @@ import {
     Tooltip,
     Area,
 } from "recharts";
+import { Link } from "react-router-dom";
+import home from "../images/home.svg";
+import alltransact from "../images/credit-card.svg";
+import trans from "../images/plus-circle.svg";
+import "../style/reports.css";
 
 export default function reports() {
     //! UV = Ausgaben PV = Einnahmen
@@ -57,35 +62,37 @@ export default function reports() {
                     <img src={Profil} alt="profil" />
                 </div>
             </header>
-
-            <div className="reports_content">
-                <div className="reports_content_header">
-                    <h1>Reports</h1>
-                </div>
+            <div className="reports_content_header">
+                <h1>Reports</h1>
+            </div>
+            <main className="reports_content">
                 <div className="reports_content_body">
                     <img src={income} alt="income" />
-                    <p>Income</p>
-                    <p>
-                        {/* 
+                    <div>
+                        <p>Income</p>
+                        <p>
+                            {/* 
                         //! DB Platzhalter wieviel Geld eingenommen wurde
                         //TODO: placeholder = Platzhalter für die Datenbankabfrage
                         */}
-                        +$<span>placeholder</span>
-                    </p>
+                            +$<span>placeholder</span>
+                        </p>
+                    </div>
                 </div>
                 <div className="reports_content_body_current">
                     <img src={Expenses} alt="income" />
-                    <p>Current</p>
-                    <p>
-                        {/* 
+                    <div>
+                        <p>Current</p>
+                        <p>
+                            {/* 
                         //! DB Platzhalter wieviel Geld ausgegeben wurde
                         //TODO: placeholder = Platzhalter für die Datenbankabfrage
                         */}
-                        +$<span>placeholder</span>
-                    </p>
+                            +$<span>placeholder</span>
+                        </p>
+                    </div>
                 </div>
-            </div>
-
+            </main>
             <div className="reports_graph">
                 <AreaChart
                     width={410}
@@ -176,7 +183,6 @@ export default function reports() {
                     />
                 </AreaChart>
             </div>
-
             <div className="reports_table">
                 <h2>Total Transactions</h2>
                 {/* 
@@ -184,6 +190,23 @@ export default function reports() {
                 //TODO: Datenbankabfrage für die Gesamttransaktionen
                 */}
                 {/* Table */}
+            </div>
+            <div className="reports_footer">
+                <div className="nav-footer-item">
+                    <Link to="/">
+                        <img src={home} alt="home" />
+                    </Link>
+                    <Link to="/alltransact">
+                        <img src={alltransact} alt="alltransact" />
+                    </Link>
+                    <Link to="/addtransaction">
+                        <img src={trans} alt="transaction" />
+                    </Link>
+                    <div className="nav_add_underline">
+                        <p>Reports</p>
+                        <div className="nav_blue_line"></div>
+                    </div>
+                </div>
             </div>
         </div>
     );
