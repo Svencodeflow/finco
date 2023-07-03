@@ -20,6 +20,11 @@ import Addtransaction from "./routes/addtransaction/Addtransaction";
 import Income from "./routes/addtransaction/Income";
 import Expense from "./routes/addtransaction/Expenses";
 
+// transactiontotal Screens
+import Home from "./routes/home";
+import Reports from "./routes/reports";
+import Transactiontotal from "./routes/transaction/transactiontotal";
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -71,6 +76,11 @@ const router = createBrowserRouter([
                 errorElement: <ErrorPage />,
             },
         ],
+    },
+    {
+        path: "/reports",
+        element: <Reports />,
+        errorElement: <ErrorPage />,
     },
 ]);
 
