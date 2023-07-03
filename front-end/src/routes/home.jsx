@@ -10,10 +10,11 @@ import profil_logo from './images/profil_logo.svg';
 
 
 
+
 function App() {
   return (
     <div>
-      <header>
+        <header>
         <aside>   
         <h1>Welcome back</h1> 
         <p>Kevin Kasperek</p>
@@ -26,28 +27,28 @@ function App() {
       <main >
 
         <div>
-          <img src={kreditcardbluefinal} width="350" height="auto" alt="kreditcardbluefinal" id='kreditcard' />
+          <Image src={kreditcardbluefinal} width="350" height="auto" alt="kreditcardbluefinal" id='kreditcard' />
         </div>
 
-        <Grid>
+        <Grid verticalAlign='center' textAlign='center'>
           <Grid.Row>
-            <Grid.Column>
+            <Grid.Column width={7} position='left'>
               <Segment>
-                <img src={income} alt="income" />
+                <img src={income} width="107" height="auto"  alt="income" />
                 <p>Income</p>
                 <p>+50000</p>
               </Segment>
             </Grid.Column>
-            <Grid.Column>
-              <Segment>
-                <img src={expense} alt="expense" />
+            <Grid.Column width={7} verticalAlign='center' textAlign='center'>
+              <Segment >
+                <img src={expense}  alt="expense" />
                 <p>Expense</p>
                 <p>+50000</p>
               </Segment>
             </Grid.Column>
           </Grid.Row>
           <Grid.Row>
-            <Grid.Column>
+            <Grid.Column width={14} verticalAlign='center'>
               <Segment>
                 <img src={monthly} alt="monthlyLimit" />
                 <p>Monthly spending limit</p>
