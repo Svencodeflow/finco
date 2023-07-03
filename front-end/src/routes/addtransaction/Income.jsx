@@ -14,7 +14,7 @@ export default function Income() {
     const location = useLocation();
     const local = location.pathname;
 
-    const minSwipeDistance = 60;
+    const minSwipeDistance = 50;
 
     const onTouchStart = (e) => {
         setTouchEnd(0);

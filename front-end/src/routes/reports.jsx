@@ -59,7 +59,9 @@ export default function reports() {
                     <img src={Back} alt="back" />
                 </div>
                 <div className="reports_profil">
-                    <img src={Profil} alt="profil" />
+                    <Link to="/accountsetting">
+                        <img src={Profil} alt="profil" />
+                    </Link>
                 </div>
             </header>
             <div className="reports_content_header">
