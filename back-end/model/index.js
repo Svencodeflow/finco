@@ -7,6 +7,7 @@ export { User } from "./User.js";
 export { 
   ResetToken, 
   createResetToken, 
+  validateResetToken,
 } from "./ResetToken.js";
 
 dotenv.config({ path: new URL("../../.env", import.meta.url).pathname });
