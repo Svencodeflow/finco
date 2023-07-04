@@ -2,7 +2,7 @@ import React from "react";
 import { Header, Image, Grid, Segment } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import "../style/home.css";
-import kreditcardbluefinal from "../images/kreditcardbluefinal.png";
+import kreditcardbluefinal from "../images/kreditcardbluefinal.png"; 
 import income from "../images/income.png";
 import expense from "../images/expense.png";
 import monthly from "../images/monthly.png";
