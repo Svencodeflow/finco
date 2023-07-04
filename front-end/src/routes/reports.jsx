@@ -39,6 +39,11 @@ export default function reports() {
             Einnahmen: 500,
             Ausgabe: 1000,
         },
+        {
+            name: "04.07",
+            Einnahmen: 2000,
+            Ausgabe: 500,
+        },
     ];
 
     //* Saldo = Saldo + Einnahmen - Ausgaben
@@ -112,12 +117,12 @@ export default function reports() {
                         >
                             <stop
                                 offset="5%"
-                                stopColor="#0f0"
+                                stopColor="#00f"
                                 stopOpacity={0.8}
                             />
                             <stop
                                 offset="95%"
-                                stopColor="#0f0"
+                                stopColor="#00f"
                                 stopOpacity={0}
                             />
                         </linearGradient>
@@ -130,12 +135,12 @@ export default function reports() {
                         >
                             <stop
                                 offset="5%"
-                                stopColor="#ff0000"
+                                stopColor="#ff0"
                                 stopOpacity={0.8}
                             />
                             <stop
                                 offset="95%"
-                                stopColor="#ff0000"
+                                stopColor="#ff0"
                                 stopOpacity={0}
                             />
                         </linearGradient>
@@ -165,14 +170,14 @@ export default function reports() {
                     <Area
                         type="monotone"
                         dataKey="Einnahmen"
-                        stroke="#0f0"
+                        stroke="#00f"
                         fillOpacity={1}
                         fill="url(#colorUv)"
                     />
                     <Area
                         type="monotone"
                         dataKey="Ausgabe"
-                        stroke="#ff0000"
+                        stroke="#ff0"
                         fillOpacity={1}
                         fill="url(#colorPv)"
                     />
