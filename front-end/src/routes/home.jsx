@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Image, Grid, Segment } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
@@ -8,6 +9,7 @@ import expense from "../images/expense.png";
 import monthly from "../images/monthly.png";
 import profil_logo from "../images/profil_logo.svg";
 import Footernavbar from "./transaction/footernav.jsx";
+
 
 export default function home() {
     return (
@@ -70,9 +72,3 @@ export default function home() {
                 </Grid>
             </main>
 
-            <footer className="footerNav">
-                <Footernavbar />
-            </footer>
-        </div>
-    );
-}

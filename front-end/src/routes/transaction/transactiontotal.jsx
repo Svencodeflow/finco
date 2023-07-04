@@ -16,6 +16,7 @@ import profil_logo from "../../images/profil_logo.svg";
 import income from "../../images/income.png";
 import expense from "../../images/expense.png";
 
+
 function transactiontotal() {
     return (
         <>
