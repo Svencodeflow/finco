@@ -25,6 +25,7 @@ import Expense from "./routes/addtransaction/Expenses";
 import Home from "./routes/home";
 import Reports from "./routes/reports";
 import Transactiontotal from "./routes/transaction/transactiontotal";
+import Footernav from "./routes/transaction/footernav";
 
 const router = createBrowserRouter([
     {
@@ -87,6 +88,20 @@ const router = createBrowserRouter([
         path: "/accountsetting",
         element: <Setting />,
         errorElement: <ErrorPage />,
+    },
+    {
+        path: "/transactiontotal",
+        element: <Transactiontotal />,
+        errorElement: <ErrorPage />,
+    },
+    {
+        path: "/home",
+        element: <Home />,
+        errorElement: <ErrorPage />,
+    },
+    {
+        path: "/footernav",
+        element: <Footernav />,
     },
 ]);
 
