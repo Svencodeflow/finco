@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
     Container,
     Header,
@@ -15,6 +16,7 @@ import Logo from "../../images/Logo.svg";
 import profil_logo from "../../images/profil_logo.svg";
 import income from "../../images/income.png";
 import expense from "../../images/expense.png";
+
 
 
 function transactiontotal() {
@@ -34,7 +36,7 @@ function transactiontotal() {
                     <Container>
                         <Header as="h2">
                             All Transaction
-                            <ButtonGroup floated="right">
+                                <ButtonGroup >
                                 <Button icon labelPosition="left">
                                     <Icon name="search" />
                                 </Button>
@@ -45,22 +47,24 @@ function transactiontotal() {
                         </Header>
 
                         <div className="container">
-                            <Grid columns={2}>
-                                <Grid.Column width={7} textAlign="right">
-                                    <Segment style={{ borderRadius: "50px" }}>
-                                        <Image
+                            <Grid columns={2}  >
+                                <Grid.Column style={{ margin: '0px 0px 0px 20px' }} width={7} textAlign="center">
+                                    <Segment size="tiny"style={{ borderRadius: "90px" }}>
+                                    
+                                        <Image 
                                             src={income}
                                             width="107"
                                             height="auto"
                                             alt="income"
+                                        
                                         />
                                         <p>Income</p>
                                         <p>+50000</p>
                                     </Segment>
                                 </Grid.Column>
 
-                                <Grid.Column width={7} textAlign="left">
-                                    <Segment style={{ borderRadius: "50px" }}>
+                                <Grid.Column width={7} textAlign="center">
+                                    <Segment size="tiny" style={{ borderRadius: "90px" }}>
                                         <Image
                                             src={expense}
                                             width="107"
