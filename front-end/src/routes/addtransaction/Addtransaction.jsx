@@ -17,7 +17,7 @@ export default function Addtransaction() {
                     <Link to="/">
                         <img src={home} alt="home" />
                     </Link>
-                    <Link to="/addtransaction">
+                    <Link to="/transactiontotal">
                         <img src={alltransact} alt="alltransact" />
                     </Link>
                     <div className="nav_add_underline">

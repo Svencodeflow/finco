@@ -14,7 +14,7 @@ function App() {
                     <p>Home</p>
                     <div className="nav_blue_line"></div>
                 </div>
-                <Link to="/alltransact">
+                <Link to="/transactiontotal">
                     <img src={alltransact} alt="alltransact" />
                 </Link>
                 <Link to="/addtransaction">
