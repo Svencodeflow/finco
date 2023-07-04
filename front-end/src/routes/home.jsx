@@ -60,7 +60,7 @@ function Home() {
       </main>
       
       <footer className="footerNav">
-      <footernavbar />
+      <footernavbar /> kkkkkkkkkkkkkkkkkkk
       </footer>
     </div>
   );
