@@ -2,13 +2,13 @@
 import React from 'react';
 import { Container, Header, Image, Segment, Grid, Button, Icon, ButtonGroup } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
-import './App.css';
+import "../style/transactiontotal.css";
 import Logo from './images/Logo.svg';
 import profil_logo from './images/profil_logo.svg';
 import income from './images/income.png';
 import expense from './images/expense.png';
 
-function App() {
+function transactiontotal() {
   return (
     <>
       <div>
@@ -61,4 +61,4 @@ function App() {
   );
 }
 
-export default App;
+export default transactiontotal;
