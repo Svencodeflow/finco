@@ -9,7 +9,7 @@ import monthly from "../images/monthly.png";
 import profil_logo from "../images/profil_logo.svg";
 
 
-function App() {
+function home() {
     return (
         <div>
             <header>
@@ -72,4 +72,4 @@ function App() {
   );
 }
 
-export default App;
+export default home;
