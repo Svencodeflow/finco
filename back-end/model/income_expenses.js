@@ -4,6 +4,9 @@ const app = express();
 
 app.use(express.json());
 
+const incomeModel = mongoose.model("income", incomeSchema); // 'income' is the name of the collection
+const expenseModel = mongoose.model("expense", expenseSchema); // 'expense' is the name of the collection
+
 const incomeSchema = new mongoose.Schema({
     amount: { type: Number, required: true },
     category: { type: String, required: true },
@@ -11,16 +14,12 @@ const incomeSchema = new mongoose.Schema({
     time: { type: String, required: true },
 });
 
-const incomeModel = mongoose.model("income", incomeSchema); // 'income' is the name of the collection
-
 const expenseSchema = new mongoose.Schema({
     amount: { type: Number, required: true },
     category: { type: String, required: true },
     date: { type: Date, required: true },
     time: { type: String, required: true },
 });
-
-const expenseModel = mongoose.model("expense", expenseSchema); // 'expense' is the name of the collection
 
 app.post("/income", async (req, res) => {
     const income = req.body;
