@@ -28,6 +28,6 @@ function App() {
     );
 }
 
-hallowie gehts dir
+
 
 export default App;
