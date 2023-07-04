@@ -1,7 +1,7 @@
 import React from 'react';
 import { Header, Image, Grid, Segment } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
-import './App.css';
+import './Home.css';
 import kreditcardbluefinal from './images/kreditcardbluefinal.png';
 import income from './images/income.png';
 import expense from './images/expense.png';
@@ -11,7 +11,7 @@ import profil_logo from './images/profil_logo.svg';
 
 
 
-function App() {
+function Home() {
   return (
     <div>
         <header>
@@ -66,4 +66,4 @@ function App() {
   );
 }
 
-export default App;
+export default Home;
