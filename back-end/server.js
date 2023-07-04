@@ -165,7 +165,7 @@ app.post("/api/upload/avatar", authenticateToken,
         message: error.message,
       });
     };
-  });
+  }
 );
 
 app.get("/*", (req, res) => {
