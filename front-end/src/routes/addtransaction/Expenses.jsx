@@ -12,7 +12,7 @@ export default function Expenses() {
     const [touchEnd, setTouchEnd] = useState(0);
     const navigate = useNavigate();
 
-    const minSwipeDistance = 60;
+    const minSwipeDistance = 100;
 
     const onTouchStart = (e) => {
         setTouchEnd(0);

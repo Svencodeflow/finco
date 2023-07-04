@@ -14,11 +14,17 @@ import Onboard2 from "./routes/onboard/Onboard2.jsx";
 import Register from "./routes/login/Register";
 import Login from "./routes/login/Login";
 import Accset from "./routes/login/Accset";
+import Setting from "./routes/Accountsetting";
 
 // addTransaction Screens
 import Addtransaction from "./routes/addtransaction/Addtransaction";
 import Income from "./routes/addtransaction/Income";
 import Expense from "./routes/addtransaction/Expenses";
+
+// transactiontotal Screens
+import Home from "./routes/home";
+import Reports from "./routes/reports";
+import Transactiontotal from "./routes/transaction/transactiontotal";
 
 const router = createBrowserRouter([
     {
@@ -71,6 +77,16 @@ const router = createBrowserRouter([
                 errorElement: <ErrorPage />,
             },
         ],
+    },
+    {
+        path: "/reports",
+        element: <Reports />,
+        errorElement: <ErrorPage />,
+    },
+    {
+        path: "/accountsetting",
+        element: <Setting />,
+        errorElement: <ErrorPage />,
     },
 ]);
 
