@@ -1,0 +1,158 @@
+#accountsetting {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.accsett-header {
+    position: fixed;
+    top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90vw;
+}
+
+.accsett-main-item {
+    width: 90vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.accsett-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.accsett_wallet,
+.accsett_main_notify,
+.accsett_main_setting,
+.accsett_main_faq,
+.accsett_main_logout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    width: 90vw;
+}
+
+.item_eins,
+.item_zwei,
+.item_drei,
+.item_vier,
+.item_fuenf {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.accsett-main h4 {
+    margin: 0 auto;
+    display: flex;
+    margin-left: 10px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+}
+
+.accsett_wallet,
+.accsett_main_notify,
+.accsett_main_setting,
+.accsett_main_faq,
+.accsett_main_logout {
+    margin-top: 0;
+    background-color: rgba(128, 128, 128, 0.671);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.accsett_wallet,
+.accsett_main_faq {
+    margin-bottom: 20px;
+}
+
+.accsett_main_setting {
+    margin: 1px;
+}
+
+.nav-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-footer-item {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    box-shadow: 0px -2px 40px rgba(0, 0, 0, 0.363);
+    padding: 15px;
+}
+
+.nav-footer-item p {
+    background-color: transparent;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+}
+
+.nav_blue_line {
+    background-color: rgb(38, 0, 255);
+    width: 30px;
+    height: 5px;
+    border-radius: 50px;
+}
+
+.nav_add_underline {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-footer-item {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    box-shadow: 0px -2px 40px rgba(0, 0, 0, 0.363);
+    padding: 15px;
+}
+
+.nav-footer-item p {
+    background-color: transparent;
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(0, 0, 0);
+}
+
+.nav_add_underline {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
