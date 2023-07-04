@@ -4,8 +4,31 @@ import { User, createResetToken, validateResetToken } from "./model/index.js";
 import { authenticateToken, generateAccessToken } from "./lib/jwt.js";
 import cookieParser from "cookie-parser";
 import { sendMail } from "./lib/email.js";
+import Multer from "multer";
+import { v2 as cloudinary } from "cloudinary";
 
 dotenv.config({ path: new URL("../.env", import.meta.url).pathname });
+
+//--------------CLOUDINARY-CONFIG--------------\\
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
+//--------------CLOUDINARY-UPLOADER--------------\\
+async function handleUpload(file) {
+  const res = await cloudinary.uploader.upload(file, {
+    resource_type: "auto",
+  });
+  return res;
+};
+
+//--------------MULTER-MEMORY-STORAGE--------------\\
+const storage = new Multer.memoryStorage();
+const upload = Multer({
+  storage,
+});
 
 const PORT = process.env.BE_PORT || 3000;
 const app = express();
@@ -122,10 +145,28 @@ app.post("/api/setpassword", async (req, res) => {
   } catch (error) {
     if (error.message) {
       return res.status(500).send(error.message);
-    }
+    };
+
     return res.status(500).send("Unknown error");
-  }
+  };
 });
+
+//--------------UPLOAD-AVATAR--------------\\
+app.post("/api/upload/avatar", authenticateToken,
+  upload.single("avatar"), async (req, res) => {
+    try {
+      const b64 = Buffer.from(req.file.buffer).toString("base64");
+      let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
+      const cldRes = await handleUpload(dataURI);
+      res.json(cldRes);
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({
+        message: error.message,
+      });
+    };
+  });
+);
 
 app.get("/*", (req, res) => {
   res.sendFile(ReactAppIndex.pathname);
