@@ -1,5 +1,5 @@
 import React from "react";
-import { Header, Image, Grid, Segment } from "semantic-ui-react";
+import { Image, Grid, Segment } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import "../style/home.css";
 import kreditcardbluefinal from "../images/kreditcardbluefinal.png"; 
@@ -7,12 +7,12 @@ import income from "../images/income.png";
 import expense from "../images/expense.png";
 import monthly from "../images/monthly.png";
 import profil_logo from "../images/profil_logo.svg";
+import Footernavbar from "./transaction/footernav.jsx";
 
-
-function home() {
+export default function home() {
     return (
-        <div>
-            <header>
+        <div id="home">
+            <header className="home_header">
                 <aside>
                     <h1>Welcome back</h1>
                     <p>Kevin Kasperek</p>
@@ -22,54 +22,57 @@ function home() {
                 </section>
             </header>
 
-            <main>
-                <div>
+            <main className="home_main">
+                <div id="kreditcard">
                     <img
                         src={kreditcardbluefinal}
                         width="350"
                         height="auto"
                         alt="kreditcardbluefinal"
-                        id="kreditcard"
                     />
                 </div>
-        <div>
-          <Image src={kreditcardbluefinal} width="350" height="auto" alt="kreditcardbluefinal" id='kreditcard' />
+
+                <Grid verticalAlign="center" textAlign="center">
+                    <Grid.Row>
+                        <Grid.Column width={6} position="left">
+                            <Segment style={{ borderRadius: "30px" }}>
+                                <img
+                                    src={income}
+                                    width="107"
+                                    height="auto"
+                                    alt="income"
+                                />
+                                <p>Income</p>
+                                <p>+50000</p>
+                            </Segment>
+                        </Grid.Column>
+                        <Grid.Column
+                            width={6}
+                            verticalAlign="center"
+                            textAlign="center"
+                        >
+                            <Segment style={{ borderRadius: "30px" }}>
+                                <img src={expense} alt="expense" />
+                                <p>Expense</p>
+                                <p>+50000</p>
+                            </Segment>
+                        </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row>
+                        <Grid.Column width={12} verticalAlign="center">
+                            <Segment style={{ borderRadius: "30px" }}>
+                                <img src={monthly} alt="monthlyLimit" />
+                                <p>Monthly spending limit</p>
+                                <p>+50000</p>
+                            </Segment>
+                        </Grid.Column>
+                    </Grid.Row>
+                </Grid>
+            </main>
+
+            <footer className="footerNav">
+                <Footernavbar />
+            </footer>
         </div>
-
-        <Grid verticalAlign='center' textAlign='center'>
-          <Grid.Row>
-            <Grid.Column width={7} position='left'>
-              <Segment style={{ borderRadius: '30px' }}>
-                <img src={income} width="107" height="auto"  alt="income" />
-                <p>Income</p>
-                <p>+50000</p>
-              </Segment>
-            </Grid.Column>
-            <Grid.Column width={7} verticalAlign='center' textAlign='center'>
-              <Segment style={{ borderRadius: '30px' }} >
-                <img src={expense}  alt="expense" />
-                <p>Expense</p>
-                <p>+50000</p>
-              </Segment>
-            </Grid.Column>
-          </Grid.Row>
-          <Grid.Row>
-            <Grid.Column width={14} verticalAlign='center'>
-              <Segment style={{ borderRadius: '30px' }} >
-                <img src={monthly} alt="monthlyLimit" />
-                <p>Monthly spending limit</p>
-                <p>+50000</p>
-              </Segment>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </main>
-      
-      <footer className="footerNav">
-      <footernavbar />
-      </footer>
-    </div>
-  );
+    );
 }
-
-export default home;
