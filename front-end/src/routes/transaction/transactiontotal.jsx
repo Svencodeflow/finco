@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Container, Header, Image, Segment, Grid, Button, Icon, ButtonGroup } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
@@ -61,4 +62,3 @@ function App() {
 }
 
 export default App;
-
