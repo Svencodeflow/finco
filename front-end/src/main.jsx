@@ -24,6 +24,10 @@ import Expense from "./routes/addtransaction/Expenses";
 // transactiontotal Screens
 import Home from "./routes/home";
 import Reports from "./routes/reports";
+
+// Seach Screens
+import Onlysearch from "./routes/transaction/onlysearch";
+import Searchtransaction from "./routes/transaction/searchtransaction";
 import Transactiontotal from "./routes/transaction/transactiontotal";
 import Footernav from "./routes/transaction/footernav";
 
@@ -106,7 +110,11 @@ const router = createBrowserRouter([
 
     {
         path: "/onlysearch",
-        element: <onlysearch />,
+        element: <Onlysearch />,
+    },
+    {
+        path: "/searchtransaction",
+        element: <Searchtransaction />,
     },
 ]);
 

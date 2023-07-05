@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 import {
     Container,
     Header,
@@ -20,6 +22,10 @@ import Date from "../../images/date.png";
 import Search from "../../images/Search.png";
 
 
+import home from "../../images/home.svg";
+import alltransact from "../../images/credit-card.svg";
+import trans from "../../images/plus-circle.svg";
+import report from "../../images/pie-chart.svg";
 
 function transactiontotal() {
     return (
@@ -69,6 +75,21 @@ function transactiontotal() {
                         </div>
                     </div>
                 </main>
+            </div>
+            <div className="nav-footer-item">
+                <Link to="/">
+                    <img src={home} alt="home" />
+                </Link>
+                <div className="nav_add_underline">
+                    <p>Transaction</p>
+                    <div className="nav_blue_line"></div>
+                </div>
+                <Link to="/addtransaction">
+                    <img src={trans} alt="transaction" />
+                </Link>
+                <Link to="/reports">
+                    <img src={report} alt="report" />
+                </Link>
             </div>
         </>
     );

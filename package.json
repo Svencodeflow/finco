@@ -1,10 +1,17 @@
 {
-  "dependencies": {
-    "axios": "^1.4.0",
-    "react-icons": "^4.10.1",
-    "react-router-dom": "^6.14.1",
-    "recharts": "^2.7.2",
-    "semantic-ui-css": "^2.5.0",
-    "semantic-ui-react": "^2.1.4"
-  }
+    "scripts": {
+        "dev:server": "npm run dev --prefix back-end",
+        "dev:vite": "npm run dev --prefix front-end",
+        "dev": "concurrently \"npm:dev:*\"",
+        "start": "npm run build --prefix front-end && npm start --prefix back-end"
+    },
+    "dependencies": {
+        "axios": "^1.4.0",
+        "concurrently": "^8.2.0",
+        "react-router-dom": "^6.14.1",
+        "recharts": "^2.7.2",
+        "semantic-ui-css": "^2.5.0",
+        "semantic-ui-react": "^2.1.4"
+    }
+
 }

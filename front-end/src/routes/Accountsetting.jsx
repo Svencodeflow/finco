@@ -11,7 +11,7 @@ import faq from "../images/help-circle.svg";
 import logout from "../images/log-out.svg";
 import arrow from "../images/chevron-down.svg";
 
-import "semantic-ui-css/semantic.min.css";
+import "../style/accsetting.css";
 
 export default function Accountsetting() {
     return (
@@ -41,9 +41,6 @@ export default function Accountsetting() {
                             <img src={bell} alt="notification" />
                             <h4>Notification</h4>
                         </div>
-                        <div class="ui toggle checkbox">
-                            <input type="checkbox" name="public" />
-                        </div>
                     </div>
                     <div className="accsett_main_setting">
                         <div className="item_drei">
@@ -72,7 +69,7 @@ export default function Accountsetting() {
                 <Link to="/">
                     <img src={home} alt="home" />
                 </Link>
-                <Link to="/alltransact">
+                <Link to="/transactiontotal">
                     <img src={alltransact} alt="alltransact" />
                 </Link>
                 <Link to="/addtransaction">

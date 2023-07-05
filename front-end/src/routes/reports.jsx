@@ -203,7 +203,7 @@ export default function reports() {
                     <Link to="/">
                         <img src={home} alt="home" />
                     </Link>
-                    <Link to="/alltransact">
+                    <Link to="/transactiontotal">
                         <img src={alltransact} alt="alltransact" />
                     </Link>
                     <Link to="/addtransaction">
