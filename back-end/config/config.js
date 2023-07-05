@@ -1,4 +1,5 @@
 import dotenv from "dotenv";
+import path from "path";
 
 // option 1: Windos
 import { fileURLToPath } from "url";
