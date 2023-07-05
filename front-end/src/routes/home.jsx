@@ -69,7 +69,9 @@ export default function home() {
                     </Grid.Row>
                 </Grid>
             </main>
-            <Footernavbar />
+            <footer className="footerNav">
+                <Footernavbar />
+            </footer>
         </div>
     );
 }

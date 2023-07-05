@@ -107,6 +107,7 @@ const router = createBrowserRouter([
         path: "/footernav",
         element: <Footernav />,
     },
+
     {
         path: "/onlysearch",
         element: <Onlysearch />,
