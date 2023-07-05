@@ -16,6 +16,8 @@ import Logo from "../../images/Logo.svg";
 import profil_logo from "../../images/profil_logo.svg";
 import income from "../../images/income.png";
 import expense from "../../images/expense.png";
+import Date from "../../images/date.png";
+import Search from "../../images/Search.png";
 
 
 
@@ -33,51 +35,39 @@ function transactiontotal() {
                 </div>
 
                 <main>
-                    <Container>
-                        <Header as="h2">
-                            All Transaction
-                                <ButtonGroup >
-                                <Button icon labelPosition="left">
-                                    <Icon name="search" />
-                                </Button>
-                                <Button icon labelPosition="right">
-                                    <Icon name="calendar" />
-                                </Button>
-                            </ButtonGroup>
-                        </Header>
+                 <div>
+                        <div className="allbutton">
+                            <h1> All Transaction</h1>
+                            <div className="button">
+                            <button className="seacabutton">
+                            <img src={Date} alt="Date" />
+                            </button>
+                            <button className="seacabutton">
+                            <img src={Search} alt="Search" />
+                            </button>
+                            </div>
+                </div> 
+                   
+                   
 
                         <div className="container">
-                            <Grid columns={2}  >
-                                <Grid.Column style={{ margin: '0px 0px 0px 20px' }} width={7} textAlign="center">
-                                    <Segment size="tiny"style={{ borderRadius: "90px" }}>
-                                    
-                                        <Image 
-                                            src={income}
-                                            width="107"
-                                            height="auto"
-                                            alt="income"
-                                        
-                                        />
-                                        <p>Income</p>
-                                        <p>+50000</p>
-                                    </Segment>
-                                </Grid.Column>
+                          <div className="money">
+                          <Image src={income} alt="income" />
+                          <div className="text">
+                          <p>Income</p>
+                          <p>+50000</p>
+                          </div>
+                          </div>
 
-                                <Grid.Column width={7} textAlign="center">
-                                    <Segment size="tiny" style={{ borderRadius: "90px" }}>
-                                        <Image
-                                            src={expense}
-                                            width="107"
-                                            height="auto"
-                                            alt="expense"
-                                        />
-                                        <p>Expense</p>
-                                        <p>+50000</p>
-                                    </Segment>
-                                </Grid.Column>
-                            </Grid>
+                          <div className="money">
+                          <Image src={expense} alt="expense" />
+                          <div className="text">
+                          <p>Expense</p>
+                          <p>+50000</p>
+                          </div>
+                          </div>
                         </div>
-                    </Container>
+                    </div>
                 </main>
             </div>
         </>
