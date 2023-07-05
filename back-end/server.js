@@ -33,7 +33,6 @@ const upload = Multer({
 const PORT = process.env.BE_PORT || 3000;
 const app = express();
 
-app.use(express.json()); //jasonParser to a js object
 app.use(express.json());
 app.use(cookieParser());
 
@@ -165,7 +164,7 @@ app.post("/api/upload/avatar", authenticateToken,
         message: error.message,
       });
     };
-  });
+  }
 );
 
 app.get("/*", (req, res) => {
