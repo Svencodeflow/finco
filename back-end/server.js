@@ -7,16 +7,12 @@ import {
     Category,
 } from "./model/index.js";
 import { authenticateToken, generateAccessToken } from "./lib/jwt.js";
-import cookieParser from "cookie-parser";
-import { sendMail } from "./lib/email.js";
-import Multer from "multer";
 import { v2 as cloudinary } from "cloudinary";
-import path from "path";
 import { fileURLToPath } from "url";
-
-// const ReactAppIndex = path.join(
-//     new URL(process.env.PATHNAME, import.meta.url)
-// );
+import { sendMail } from "./lib/email.js";
+import cookieParser from "cookie-parser";
+import Multer from "multer";
+import path from "path";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
