@@ -1,5 +1,5 @@
 import express from "express";
-import dotenv from "dotenv";
+import "./config/config.js";
 import {
     User,
     createResetToken,
@@ -21,8 +21,6 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ReactAppIndex = path.join(__dirname, process.env.PATHNAME);
-
-dotenv.config({ path: new URL("../.env", import.meta.url).pathname });
 
 //--------------CLOUDINARY-CONFIG--------------\\
 cloudinary.config({
