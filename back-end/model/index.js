@@ -11,11 +11,9 @@ export {
     validateResetToken,
 } from "./ResetToken.js";
 
-dotenv.config({ path: new URL("../../.env", import.meta.url).pathname });
+export { income, expense } from "./income_expenses.js";
+export { Category } from "./category.js";
 
-//
-//! windows
-//
-// dotenv.config({ path: fileURLToPath(new URL("../../.env", import.meta.url)) });
+// dotenv.config({ path: new URL("../../.env", import.meta.url).pathname });
 
 mongoose.connect(process.env.DB);

@@ -4,12 +4,13 @@ import Profil from "../../images/profilpic.png";
 import { Label, Input, Select, Button } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import "../../style/addincome.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Income() {
     const [touchStart, setTouchStart] = useState(0);
     const [touchEnd, setTouchEnd] = useState(0);
+    const [category, setCategory] = useState([]);
     const navigate = useNavigate();
     const location = useLocation();
     const local = location.pathname;
@@ -37,16 +38,23 @@ export default function Income() {
 
     //! Nacher datenbank Fetchen und in die Select einfügen
     //TODO: Datenbank Cate
-    const incoming = [
-        { key: "Pocket_money", value: "Pocket_money", text: "Pocket money" },
-        { key: "salary", value: "salary", text: "Salary" },
-        {
-            key: "passive_income",
-            value: "passive_income",
-            text: "Passive income",
-        },
-        { key: "other", value: "other", text: "Other" },
-    ];
+    useEffect(() => {
+        async function fetchData() {
+            const response = await fetch("/api/categories/incoming");
+            const data = await response.json();
+            setCategory(data);
+            console.log(data);
+        }
+        fetchData();
+    }, []);
+
+    const options = category.map((incoming) => ({
+        key: incoming._id,
+        value: incoming.title,
+        text: incoming.title,
+    }));
+
+    console.log(options);
 
     return (
         <div
@@ -87,7 +95,7 @@ export default function Income() {
                             <Select
                                 size="large"
                                 placeholder="Select your Income"
-                                options={incoming}
+                                options={options}
                             />
                         </div>
                     </div>

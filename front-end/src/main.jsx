@@ -34,7 +34,7 @@ import Footernav from "./routes/transaction/footernav";
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Root />,
+        element: <Home />,
         errorElement: <ErrorPage />,
     },
     {
@@ -96,11 +96,6 @@ const router = createBrowserRouter([
     {
         path: "/transactiontotal",
         element: <Transactiontotal />,
-        errorElement: <ErrorPage />,
-    },
-    {
-        path: "/home",
-        element: <Home />,
         errorElement: <ErrorPage />,
     },
     {

@@ -24,6 +24,13 @@
     margin-top: 20px;
 }
 
+.expenses_title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .expenses_title img {
     width: 370px;
     height: 215px;
