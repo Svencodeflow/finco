@@ -21,7 +21,6 @@ import expense from "../../images/expense.png";
 import Date from "../../images/date.png";
 import Search from "../../images/Search.png";
 
-
 import home from "../../images/home.svg";
 import alltransact from "../../images/credit-card.svg";
 import trans from "../../images/plus-circle.svg";
@@ -41,37 +40,35 @@ function transactiontotal() {
                 </div>
 
                 <main>
-                 <div>
+                    <div>
                         <div className="allbutton">
                             <h1> All Transaction</h1>
                             <div className="button">
-                            <button className="seacabutton">
-                            <img src={Date} alt="Date" />
-                            </button>
-                            <button className="seacabutton">
-                            <img src={Search} alt="Search" />
-                            </button>
+                                <button className="seacabutton">
+                                    <img src={Date} alt="Date" />
+                                </button>
+                                <button className="seacabutton">
+                                    <img src={Search} alt="Search" />
+                                </button>
                             </div>
-                </div> 
-                   
-                   
+                        </div>
 
                         <div className="container">
-                          <div className="money">
-                          <Image src={income} alt="income" />
-                          <div className="text">
-                          <p>Income</p>
-                          <p>+50000</p>
-                          </div>
-                          </div>
+                            <div className="money">
+                                <Image src={income} alt="income" />
+                                <div className="tranacc_text">
+                                    <p>Income</p>
+                                    <p>+50000</p>
+                                </div>
+                            </div>
 
-                          <div className="money">
-                          <Image src={expense} alt="expense" />
-                          <div className="text">
-                          <p>Expense</p>
-                          <p>+50000</p>
-                          </div>
-                          </div>
+                            <div className="money">
+                                <Image src={expense} alt="expense" />
+                                <div className="text">
+                                    <p>Expense</p>
+                                    <p>+50000</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </main>

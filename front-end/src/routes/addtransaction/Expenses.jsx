@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Card from "../../images/kreditcardbluefinal.png";
 import Back from "../../images/Back.svg";
@@ -10,6 +10,7 @@ import "../../style/addexpenses.css";
 export default function Expenses() {
     const [touchStart, setTouchStart] = useState(0);
     const [touchEnd, setTouchEnd] = useState(0);
+    const [category, setCategory] = useState([]);
     const navigate = useNavigate();
 
     const minSwipeDistance = 100;
@@ -35,16 +36,22 @@ export default function Expenses() {
 
     //! Nacher datenbank Fetchen und in die Select einfügen
     //TODO: Datenbank Category Fetchen und in die Select einfügen
-    const incoming = [
-        { key: "Shopping", value: "Shopping", text: "Shopping" },
-        { key: "Other", value: "Other", text: "Other" },
-        {
-            key: "Fixed_costs",
-            value: "fixed_costs",
-            text: "Fixed costs",
-        },
-        { key: "spare_time", value: "spare_time", text: "Spare Time" },
-    ];
+
+    useEffect(() => {
+        async function fetchData() {
+            const response = await fetch("/api/categories/expense");
+            const data = await response.json();
+            setCategory(data);
+            console.log(data);
+        }
+        fetchData();
+    }, []);
+
+    const options = category.map((expense) => ({
+        key: expense._id,
+        value: expense.title,
+        text: expense.title,
+    }));
 
     return (
         <div
@@ -82,9 +89,10 @@ export default function Expenses() {
                         <label htmlFor="category">Category</label>
                         <div className="expenses_form_category">
                             <Select
-                                size="large"
+                                width={7}
+                                // size="large"
                                 placeholder="Select your expenses"
-                                options={incoming}
+                                options={options}
                             />
                         </div>
                     </div>

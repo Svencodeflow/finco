@@ -1,11 +1,9 @@
 import express from "express";
+import mongoose from "mongoose";
 
 const app = express();
 
 app.use(express.json());
-
-const incomeModel = mongoose.model("income", incomeSchema); // 'income' is the name of the collection
-const expenseModel = mongoose.model("expense", expenseSchema); // 'expense' is the name of the collection
 
 const incomeSchema = new mongoose.Schema({
     amount: { type: Number, required: true },
@@ -42,3 +40,6 @@ app.post("/expense", async (req, res) => {
         res.status(409).json({ message: error.message });
     }
 });
+
+export const income = mongoose.model("income", incomeSchema);
+export const expense = mongoose.model("expense", expenseSchema);
