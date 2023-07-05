@@ -1,7 +1,8 @@
 import React from 'react';
 import { Container, Input, Button, Icon } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
-import './style/header.css';
+import './style/transaction.css';
+
 
 
 function onlysearch() {

@@ -5,3 +5,39 @@
     padding: 20px;
    
 }
+.container
+{
+    display: flex;
+    justify-content: space-between; 
+    text-align: center;
+    margin-right: 30px;
+}
+
+.allbutton
+{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.secabutton {
+    background-color: grey;
+    border-radius: 100px 100px 100px 100px;
+    -moz-border-radius: 100px 100px 100px 100px;
+    -webkit-border-radius: 100px 100px 100px 100px;
+    border: 5px solid grey;
+}
+
+.text
+{
+margin-top: 25px;
+}
+
+.money {
+    display: flex;
+    text-align: center;
+    color: #000000;
+    margin-top: 1rem;
+    
+}
