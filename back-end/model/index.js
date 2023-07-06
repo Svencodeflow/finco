@@ -9,7 +9,7 @@ export {
     validateResetToken,
 } from "./ResetToken.js";
 
-export { income, expense } from "./income_expenses.js";
+export { Income, Expense } from "./income_expenses.js";
 export { Category } from "./category.js";
 export { ReactAppIndex } from "../config/config.js";
 

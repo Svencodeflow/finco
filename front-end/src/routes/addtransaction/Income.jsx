@@ -1,16 +1,19 @@
 import Card from "../../images/kreditcardbluefinal.png";
 import Back from "../../images/Back.svg";
 import Profil from "../../images/profilpic.png";
-import { Label, Input, Select, Button } from "semantic-ui-react";
+import { Label, Input, Button } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import "../../style/addincome.css";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import Select from "@mui/material/Select";
 
 export default function Income() {
     const [touchStart, setTouchStart] = useState(0);
     const [touchEnd, setTouchEnd] = useState(0);
-    const [category, setCategory] = useState([]);
     const [income, setIncome] = useState([]);
     const [amount, setAmount] = useState("");
     const [date, setDate] = useState("");
@@ -43,33 +46,60 @@ export default function Income() {
 
     //! Nacher datenbank Fetchen und in die Select einfügen
     //TODO: Datenbank Cate
+
+    const [categoryList, setCategoryList] = useState([]);
+    const [category, setCategory] = useState("");
+
     useEffect(() => {
-        async function fetchData() {
+        async function fetchCategories() {
             const response = await fetch("/api/categories/incoming");
             const data = await response.json();
-            setCategory(data);
+            setCategoryList(Array.isArray(data) ? data : []);
             console.log(data);
         }
-        fetchData();
+        fetchCategories();
     }, []);
 
-    const options = category.map((incoming) => ({
+    console.log(category);
+
+    const options = categoryList.map((incoming) => ({
         key: incoming._id,
         value: incoming.title,
         text: incoming.title,
     }));
 
-    console.log(options);
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const newIncome = {
             amount: amount,
-            date: date,
-            time: time,
             category: category,
+            time: time,
+            date: date,
         };
-        setIncome([...income, newIncome]);
+
+        try {
+            const response = await fetch("/api/incomes", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(newIncome),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                console.log(data);
+                setIncome([...income, data]);
+            } else {
+                console.error("Error:", response.status);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const handleChange = (e) => {
+        setCategory(e.target.value);
     };
 
     useEffect(() => {
@@ -113,16 +143,22 @@ export default function Income() {
                         </Input>
                     </div>
                     <div className="income_category">
-                        <label htmlFor="category">Category</label>
-                        <div className="income_form_category">
-                            <Select
-                                size="large"
-                                placeholder="Select your Income"
-                                options={options}
-                                value={category}
-                                onChange={(e) => setCategory(e.target.value)}
-                            />
-                        </div>
+                        <InputLabel id="demo-simple-select-label">
+                            Category
+                        </InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={category}
+                            label="Category"
+                            onChange={handleChange}
+                        >
+                            {options.map((option) => (
+                                <MenuItem key={option.key} value={option.value}>
+                                    {option.text}
+                                </MenuItem>
+                            ))}
+                        </Select>
                     </div>
                     <div className="income_date_time">
                         <div className="income_form_date_time">

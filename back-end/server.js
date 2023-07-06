@@ -7,14 +7,17 @@ import {
     validateResetToken,
     Category,
     ReactAppIndex,
+    Income,
+    Expense,
 } from "./model/index.js";
+
 import { authenticateToken, generateAccessToken } from "./lib/jwt.js";
 import cookieParser from "cookie-parser";
 import { sendMail } from "./lib/email.js";
 import Multer from "multer";
 import { v2 as cloudinary } from "cloudinary";
 
-// const ReactAppIndex = path.join(new URL(process.env.PATHNAME, import.meta.url));
+// const ReactAppIndex = path.join(new URL(process.env.PATHNAME, import.meta.url));.
 
 //--------------CLOUDINARY-CONFIG--------------\\
 cloudinary.config({
@@ -52,6 +55,7 @@ app.post("/api/signup", async (req, res) => {
     // create new user
     const { name, email } = req.body;
     const newUser = new User({ name, email });
+
     // user.setPassword (set hash and salt)
     newUser.setPassword(req.body.password);
 
@@ -285,11 +289,11 @@ app.get("/api/incomes", authenticateToken, async (req, res) => {
 //--------------ADD-INCOME--------------\\
 app.post("/api/incomes", authenticateToken, async (req, res) => {
     try {
-        const { amount, category, description, date } = req.body;
+        const { amount, category, time, date } = req.body;
         const newIncome = new Income({
             amount,
             category,
-            description,
+            time,
             date,
             user: req.userEmail,
         });
