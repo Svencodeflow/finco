@@ -11,6 +11,11 @@ export default function Income() {
     const [touchStart, setTouchStart] = useState(0);
     const [touchEnd, setTouchEnd] = useState(0);
     const [category, setCategory] = useState([]);
+    const [income, setIncome] = useState([]);
+    const [amount, setAmount] = useState("");
+    const [date, setDate] = useState("");
+    const [time, setTime] = useState("");
+
     const navigate = useNavigate();
     const location = useLocation();
     const local = location.pathname;
@@ -54,7 +59,19 @@ export default function Income() {
         text: incoming.title,
     }));
 
-    console.log(options);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const newIncome = {
+            amount: amount,
+            date: date,
+            time: time,
+        };
+        setIncome([...income, newIncome]);
+    };
+
+    useEffect(() => {
+        console.log(income);
+    }, [income]);
 
     return (
         <div
@@ -76,7 +93,7 @@ export default function Income() {
                     <h1>Add Income</h1>
                     <img src={Card} alt="card" />
                 </div>
-                <form className="income_form">
+                <form className="income_form" onSubmit={handleSubmit}>
                     <div className="income_form_input">
                         <Input
                             size="huge"
@@ -85,7 +102,10 @@ export default function Income() {
                             placeholder="Amount"
                         >
                             <Label basic>€</Label>
-                            <input />
+                            <input
+                                value={amount}
+                                onChange={(e) => setAmount(e.target.value)}
+                            />
                             <Label>.00</Label>
                         </Input>
                     </div>
@@ -103,13 +123,25 @@ export default function Income() {
                         <div className="income_form_date_time">
                             <label htmlFor="date">Date</label>
                             <div className="income_form_date">
-                                <input type="date" name="date" id="date" />
+                                <input
+                                    type="date"
+                                    name="date"
+                                    id="date"
+                                    value={date}
+                                    onChange={(e) => setDate(e.target.value)}
+                                />
                             </div>
                         </div>
                         <div className="income_form_date_time">
                             <label htmlFor="time">Time</label>
                             <div className="income_form_time">
-                                <input type="time" name="time" id="time" />
+                                <input
+                                    type="time"
+                                    name="time"
+                                    id="time"
+                                    value={time}
+                                    onChange={(e) => setTime(e.target.value)}
+                                />
                             </div>
                         </div>
                     </div>
