@@ -67,6 +67,7 @@ export default function Income() {
             amount: amount,
             date: date,
             time: time,
+            category: category,
         };
         setIncome([...income, newIncome]);
     };
@@ -118,6 +119,8 @@ export default function Income() {
                                 size="large"
                                 placeholder="Select your Income"
                                 options={options}
+                                value={category}
+                                onChange={(e) => setCategory(e.target.value)}
                             />
                         </div>
                     </div>
