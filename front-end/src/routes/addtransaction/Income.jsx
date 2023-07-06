@@ -15,7 +15,6 @@ export default function Income() {
     const [amount, setAmount] = useState("");
     const [date, setDate] = useState("");
     const [time, setTime] = useState("");
-    const [categorySelect, setCategorySelect] = useState("");
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -68,7 +67,6 @@ export default function Income() {
             amount: amount,
             date: date,
             time: time,
-            category: categorySelect,
         };
         setIncome([...income, newIncome]);
     };
@@ -76,13 +74,6 @@ export default function Income() {
     useEffect(() => {
         console.log(income);
     }, [income]);
-
-    const handleCategory = (value) => {
-        console.log(value);
-        setCategorySelect(value);
-    };
-
-    console.log(categorySelect);
 
     return (
         <div
@@ -113,7 +104,7 @@ export default function Income() {
                             placeholder="Amount"
                         >
                             <Label basic>€</Label>
-                            <input
+                            <Input
                                 value={amount}
                                 onChange={(e) => setAmount(e.target.value)}
                             />
@@ -127,10 +118,6 @@ export default function Income() {
                                 size="large"
                                 placeholder="Select your Income"
                                 options={options}
-                                value={categorySelect}
-                                onChange={(value) => {
-                                    handleCategory(value);
-                                }}
                             />
                         </div>
                     </div>
