@@ -10,14 +10,21 @@ import axios from "axios";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
+import dayjs from "dayjs";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import moment from "moment";
+// import moment from "moment-timezone";
 
 export default function Income() {
     const [touchStart, setTouchStart] = useState(0);
     const [touchEnd, setTouchEnd] = useState(0);
     const [income, setIncome] = useState([]);
     const [amount, setAmount] = useState("");
-    const [date, setDate] = useState("");
     const [time, setTime] = useState("");
+    const [date, setDate] = useState(null);
+    const [formattedDate, setFormattedDate] = useState("");
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -70,11 +77,15 @@ export default function Income() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const formattedDate = moment(date).utcOffset(0).format("DD-MM-YYYY"); // Datum im gewünschten Format formatieren
+        console.log("Formatted Date:", formattedDate);
+
         const newIncome = {
             amount: amount,
             category: category,
             time: time,
-            date: date,
+            date: moment(date).utcOffset(0).toDate(), // Das Datum mit der UTC-Offset speichern
         };
 
         try {
@@ -105,6 +116,17 @@ export default function Income() {
     useEffect(() => {
         console.log(income);
     }, [income]);
+
+    const handleDateChange = (selectedDate) => {
+        setDate(selectedDate);
+    };
+
+    useEffect(() => {
+        if (date) {
+            const parsedDate = dayjs(date).format("DD-MM-YYYY");
+            setFormattedDate(parsedDate);
+        }
+    }, [date]);
 
     return (
         <div
@@ -164,13 +186,19 @@ export default function Income() {
                         <div className="income_form_date_time">
                             <label htmlFor="date">Date</label>
                             <div className="income_form_date">
-                                <input
-                                    type="date"
-                                    name="date"
-                                    id="date"
-                                    value={date}
-                                    onChange={(e) => setDate(e.target.value)}
-                                />
+                                <LocalizationProvider
+                                    dateAdapter={AdapterDayjs}
+                                    adapterLocale="DE"
+                                >
+                                    <DatePicker
+                                        label="Date"
+                                        value={date}
+                                        onChange={handleDateChange}
+                                        renderInput={(params) => (
+                                            <input {...params} type="text" />
+                                        )}
+                                    />
+                                </LocalizationProvider>
                             </div>
                         </div>
                         <div className="income_form_date_time">
@@ -192,6 +220,7 @@ export default function Income() {
                             inverted
                             color="blue"
                             type="submit"
+                            onClick={handleSubmit}
                         >
                             Add Income
                         </Button>

@@ -225,11 +225,11 @@ app.get("/api/expenses", authenticateToken, async (req, res) => {
 //--------------ADD-EXPENSE--------------\\
 app.post("/api/expenses", authenticateToken, async (req, res) => {
     try {
-        const { amount, category, description, date } = req.body;
+        const { amount, category, time, date } = req.body;
         const newExpense = new Expense({
             amount,
             category,
-            description,
+            time,
             date,
             user: req.userEmail,
         });
