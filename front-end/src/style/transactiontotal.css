@@ -35,3 +35,13 @@
     color: #000000;
     margin-top: 1rem;
 }
+
+.transacc-footer-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    width: 100vw;
+    height: 100vh;
+}

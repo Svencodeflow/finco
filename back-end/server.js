@@ -340,6 +340,19 @@ app.put("/api/incomes/:id", authenticateToken, async (req, res) => {
     }
 });
 
+app.get("/api/transactions", async (req, res) => {
+    try {
+        const expenses = await Expense.find();
+        const incomes = await Income.find();
+        const transactions = [...expenses, ...incomes];
+        res.json(transactions);
+        console.log(transactions);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "Internal server error" });
+    }
+});
+
 app.get("/*", (req, res) => {
     res.sendFile(ReactAppIndex);
 });

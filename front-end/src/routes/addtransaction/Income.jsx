@@ -1,3 +1,4 @@
+import * as React from "react";
 import Card from "../../images/kreditcardbluefinal.png";
 import Back from "../../images/Back.svg";
 import Profil from "../../images/profilpic.png";
@@ -7,24 +8,27 @@ import "../../style/addincome.css";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
+import Select from "@mui/joy/Select";
+import Option from "@mui/joy/Option";
 import dayjs from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
+import { TimeField } from "@mui/x-date-pickers/TimeField";
+
 import moment from "moment";
-// import moment from "moment-timezone";
 
 export default function Income() {
     const [touchStart, setTouchStart] = useState(0);
     const [touchEnd, setTouchEnd] = useState(0);
     const [income, setIncome] = useState([]);
     const [amount, setAmount] = useState("");
-    const [time, setTime] = useState("");
-    const [date, setDate] = useState(null);
+    const [time, setTime] = useState(dayjs("15:30"));
+    const [date, setDate] = useState(dayjs("17-04-2022"));
     const [formattedDate, setFormattedDate] = useState("");
+    const [categoryList, setCategoryList] = useState([]);
+    const [category, setCategory] = useState([]);
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -54,20 +58,20 @@ export default function Income() {
     //! Nacher datenbank Fetchen und in die Select einfügen
     //TODO: Datenbank Cate
 
-    const [categoryList, setCategoryList] = useState([]);
-    const [category, setCategory] = useState("");
-
     useEffect(() => {
-        async function fetchCategories() {
-            const response = await fetch("/api/categories/incoming");
-            const data = await response.json();
-            setCategoryList(Array.isArray(data) ? data : []);
-            console.log(data);
-        }
+        const fetchCategories = async () => {
+            try {
+                const response = await axios.get("/api/categories/incoming");
+                const data = response.data;
+                setCategoryList(Array.isArray(data) ? data : []);
+                console.log(data);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
         fetchCategories();
     }, []);
-
-    console.log(category);
 
     const options = categoryList.map((incoming) => ({
         key: incoming._id,
@@ -110,17 +114,20 @@ export default function Income() {
     };
 
     const handleChange = (e) => {
-        setCategory(e.target.value);
+        setCategory(e);
     };
 
-    useEffect(() => {
-        console.log(income);
-    }, [income]);
+    // useEffect(() => {
+    //     console.log(income);
+    // }, [income]);
 
     const handleDateChange = (selectedDate) => {
         setDate(selectedDate);
     };
 
+    const handleTimeChange = (selectedTime) => {
+        setTime(selectedTime);
+    };
     useEffect(() => {
         if (date) {
             const parsedDate = dayjs(date).format("DD-MM-YYYY");
@@ -165,26 +172,24 @@ export default function Income() {
                         </Input>
                     </div>
                     <div className="income_category">
-                        <InputLabel id="demo-simple-select-label">
-                            Category
-                        </InputLabel>
                         <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
+                            color="primary"
+                            disabled={false}
+                            // placeholder="Category"
+                            size="lg"
+                            variant="outlined"
                             value={category}
-                            label="Category"
                             onChange={handleChange}
                         >
-                            {options.map((option) => (
-                                <MenuItem key={option.key} value={option.value}>
-                                    {option.text}
-                                </MenuItem>
+                            {options.map((test) => (
+                                <Option key={test.key} value={test.value}>
+                                    {test.text}
+                                </Option>
                             ))}
                         </Select>
                     </div>
                     <div className="income_date_time">
                         <div className="income_form_date_time">
-                            <label htmlFor="date">Date</label>
                             <div className="income_form_date">
                                 <LocalizationProvider
                                     dateAdapter={AdapterDayjs}
@@ -202,15 +207,19 @@ export default function Income() {
                             </div>
                         </div>
                         <div className="income_form_date_time">
-                            <label htmlFor="time">Time</label>
                             <div className="income_form_time">
-                                <input
-                                    type="time"
-                                    name="time"
-                                    id="time"
-                                    value={time}
-                                    onChange={(e) => setTime(e.target.value)}
-                                />
+                                <LocalizationProvider
+                                    dateAdapter={AdapterDayjs}
+                                >
+                                    <DemoContainer components={["TimeField"]}>
+                                        <TimeField
+                                            label="Format without meridiem"
+                                            value={time}
+                                            onChange={handleTimeChange}
+                                            format="HH:mm"
+                                        />
+                                    </DemoContainer>
+                                </LocalizationProvider>
                             </div>
                         </div>
                     </div>
@@ -220,7 +229,6 @@ export default function Income() {
                             inverted
                             color="blue"
                             type="submit"
-                            onClick={handleSubmit}
                         >
                             Add Income
                         </Button>
