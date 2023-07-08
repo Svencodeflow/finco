@@ -15,7 +15,7 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      external: [path.resolve(__dirname, 'node_modules/mongoose'),
+      external: [path.resolve(__dirname, '../back-end/node_modules/mongoose'),
       'crypto-js',],
     },
   },
