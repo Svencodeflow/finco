@@ -18,7 +18,7 @@ export default function Login() {
     setError("");
     try {
       await axios.post("/api/login", user);
-      nav("/home")
+      nav("/")
     } catch (error) {
       const responseError = error?.response?.data?.error?.message;
       if (responseError) {

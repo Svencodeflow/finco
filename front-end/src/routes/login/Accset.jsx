@@ -3,24 +3,26 @@ import { useState } from "react";
 import Logo from "../../images/Logo.svg";
 import profil_logo from "../../images/profil_logo.svg";
 import "../../style/accset.css";
+import axios from "axios";
 
-export default function Accset() {
-    const navigate = useNavigate(); // get the navigate function
-    const location = useLocation(); // get the location object
-    const handleClick = () => {
-        navigate("/"); // navigate to the relative path
-        console.log(location.pathname); // log the current path
-    };
+export default function FileUpload() {
+    const [file, setFile] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [res, setRes] = useState({});
 
-    // replace img src="placeholder" with your own image
-    const [src, setSrc] = useState("https://unsplash.it/200/200");
-
-    const handleImageUpload = async () => {
-        const file = e.target.files[0];
-        const formData = new FormData();
-        formData.append("image", file);
-        const response = await axios.post("/upload", formData);
-        setSrc(`/profile?imageId=${response.data}`);
+    const handleSelectFile = (e) => setFile(e.target.files[0]);
+    const handleUpload = async () => {
+        try {
+            setLoading(true);
+            const data = new FormData();
+            data.append("avatar", file);
+            const res = await axios.post("/api/upload/avatar", data);
+            setRes(res.data);
+        } catch (error) {
+            alert(error.message);
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -36,22 +38,48 @@ export default function Accset() {
                 <div className="accset_profil_text">
                     <h4>Profil picture</h4>
                 </div>
-                <img
-                    src={src}
-                    alt={"logo"}
-                    onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = "https://example.com/image.jpg";
-                    }}
-                />
             </div>
             <div className="accset_profil_button">
-                <img
-                    src={profil_logo}
-                    alt="logo"
+                <label htmlFor="file">
+                    {" "}
+                    <img
+                        src={profil_logo}
+                        alt="logo"
+                    />
+                </label>
+                {file && <center>Selected file: {file.name}</center>}
+                <input
+                    id="file"
                     type="file"
-                    onChange={handleImageUpload}
+                    style={{ display: 'none' }}
+                    onChange={handleSelectFile}
+                    multiple={false}
                 />
+                <code>
+                    {Object.keys(res).length > 0
+                        ? Object.keys(res).map((key) => (
+                            <p className="" key={key}>
+                                <span>{key}:</span>
+                                <span>{typeof res[key] === "object" ? "object" : res[key]}</span>
+                            </p>
+                        )) : null}
+                    console.log({res.secure_url});
+                </code>
+                {res && <img src={res.secure_url} />}
+                {file && (
+                    <>
+                        <div className="accset_btn">
+                            <button onClick={handleUpload}>
+                                Upload Avatar
+                            </button>
+                            <div>
+                                <center>{loading
+                                    ? "uploading..." : "uploading to profile"}
+                                </center>
+                            </div>
+                        </div>
+                    </>
+                )}
             </div>
             <div className="accset_form">
                 <form>
@@ -65,11 +93,7 @@ export default function Accset() {
                     </div>
                 </form>
             </div>
-            <div className="accset_btn">
-                <button type="submit" onClick={handleClick}>
-                    Profil Complete
-                </button>
-            </div>
+
         </div>
     );
 }
