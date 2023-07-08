@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import path from 'path'
 
 
 // https://vitejs.dev/config/
@@ -15,7 +14,7 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      external: [path.resolve(__dirname, '../back-end/node_modules/mongoose'),
+      external: ['mongoose',
       'crypto-js',],
     },
   },
