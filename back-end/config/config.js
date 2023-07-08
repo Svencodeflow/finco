@@ -1,10 +1,13 @@
 import dotenv from "dotenv";
 import path from "path";
-
-// option 1: Windos
 import { fileURLToPath } from "url";
+
 dotenv.config({ path: fileURLToPath(new URL("../../.env", import.meta.url)) });
 
-// option 2: Linux
+console.log("process.env.PATHNAME", fileURLToPath(new URL("../../.env", import.meta.url)));
 
-// dotenv.config({ path: new URL("../../.env", import.meta.url).pathname });
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const ReactAppIndex = path.join(__dirname, process.env.PATHNAME);
+
+export { ReactAppIndex };

@@ -1,25 +1,23 @@
 import express from "express";
-import dotenv from "dotenv";
+
 import "./config/config.js";
 import {
     User,
     createResetToken,
     validateResetToken,
     Category,
+    ReactAppIndex,
+    Income,
+    Expense,
 } from "./model/index.js";
+
 import { authenticateToken, generateAccessToken } from "./lib/jwt.js";
 import cookieParser from "cookie-parser";
 import { sendMail } from "./lib/email.js";
 import Multer from "multer";
 import { v2 as cloudinary } from "cloudinary";
-import path from "path";
-import { fileURLToPath } from "url";
 
-// const ReactAppIndex = path.join(new URL(process.env.PATHNAME, import.meta.url));
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const ReactAppIndex = path.join(__dirname, process.env.PATHNAME);
+// const ReactAppIndex = path.join(new URL(process.env.PATHNAME, import.meta.url));.
 
 //--------------CLOUDINARY-CONFIG--------------\\
 cloudinary.config({
@@ -57,6 +55,7 @@ app.post("/api/signup", async (req, res) => {
     // create new user
     const { name, email } = req.body;
     const newUser = new User({ name, email });
+
     // user.setPassword (set hash and salt)
     newUser.setPassword(req.body.password);
 
@@ -226,11 +225,11 @@ app.get("/api/expenses", authenticateToken, async (req, res) => {
 //--------------ADD-EXPENSE--------------\\
 app.post("/api/expenses", authenticateToken, async (req, res) => {
     try {
-        const { amount, category, description, date } = req.body;
+        const { amount, category, time, date } = req.body;
         const newExpense = new Expense({
             amount,
             category,
-            description,
+            time,
             date,
             user: req.userEmail,
         });
@@ -290,11 +289,11 @@ app.get("/api/incomes", authenticateToken, async (req, res) => {
 //--------------ADD-INCOME--------------\\
 app.post("/api/incomes", authenticateToken, async (req, res) => {
     try {
-        const { amount, category, description, date } = req.body;
+        const { amount, category, time, date } = req.body;
         const newIncome = new Income({
             amount,
             category,
-            description,
+            time,
             date,
             user: req.userEmail,
         });
@@ -335,6 +334,19 @@ app.put("/api/incomes/:id", authenticateToken, async (req, res) => {
             { new: true }
         );
         res.json(UpdateIncome);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "Internal server error" });
+    }
+});
+
+app.get("/api/transactions", async (req, res) => {
+    try {
+        const expenses = await Expense.find();
+        const incomes = await Income.find();
+        const transactions = [...expenses, ...incomes];
+        res.json(transactions);
+        console.log(transactions);
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: "Internal server error" });

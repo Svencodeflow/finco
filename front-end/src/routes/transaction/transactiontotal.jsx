@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect } from "react";
 
 import { Link } from "react-router-dom";
 
@@ -27,6 +28,19 @@ import trans from "../../images/plus-circle.svg";
 import report from "../../images/pie-chart.svg";
 
 function transactiontotal() {
+    const [transaction, setTransaction] = useState([]);
+
+    useEffect(() => {
+        fetch("/api/transactions")
+            .then((res) => res.json())
+            .then((data) => {
+                setTransaction(data);
+                console.log(data);
+            });
+    }, []);
+
+    console.log(transaction);
+
     return (
         <>
             <div>
@@ -73,6 +87,19 @@ function transactiontotal() {
                     </div>
                 </main>
             </div>
+            <div>
+                <div className="transacc-footer-item">
+                    {transaction.map((item) => (
+                        <div key={item._id}>
+                            <p>category: {item.category}</p>
+                            <p>amount: {item.amount}</p>
+                            <p>date: {new Date(item.Date)}</p>
+                            <p>time: {item.time}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
             <div className="nav-footer-item">
                 <Link to="/">
                     <img src={home} alt="home" />
