@@ -16,7 +16,7 @@ export default defineConfig({
       input: {
         main: '/opt/render/project/src/front-end/index.html',
       },
-      external: ['mongoose'],
+      external: ['crypto-js', 'mongoose'],
     },
   },
 })
