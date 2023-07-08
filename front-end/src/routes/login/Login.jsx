@@ -13,21 +13,23 @@ export default function Login() {
         password: "",
     });
 
-    const loginHandler = async (e) => {
-        e.preventDefault();
-        setError("");
-        try {
-            await axios.post("/api/login", user);
-            nav("/");
-        } catch (error) {
-            const responseError = error?.response?.data?.error?.message;
-            if (responseError) {
-                setError(responseError);
-            } else {
-                setError("Something went wrong. Please try again later");
-            }
-        }
-    };
+
+  const loginHandler = async (e) => {
+    e.preventDefault();
+    setError("");
+    try {
+      await axios.post("/api/login", user);
+      nav("/")
+    } catch (error) {
+      const responseError = error?.response?.data?.error?.message;
+      if (responseError) {
+        setError(responseError);
+      } else {
+        setError("Something went wrong. Please try again later")
+      }
+    }
+  };
+
 
     return (
         <div id="Login">

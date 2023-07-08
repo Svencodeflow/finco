@@ -7,7 +7,13 @@
 }
 
 .home_header h1 {
-    font-size: 1rem;
+    font-size: 0.75rem;
+}
+
+#home>header>aside>p {
+    font-size: 1.25rem;
+    font-weight: bold;
+
 }
 
 .home_header main {
@@ -16,6 +22,12 @@
 
 .home_header section {
     margin-top: 2rem;
+}
+
+.home_header img {
+    width: 40px;
+    aspect-ratio: 1/1;
+    border-radius: 50px;
 }
 
 #kreditcard {

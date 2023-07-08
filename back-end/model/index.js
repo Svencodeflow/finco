@@ -8,6 +8,7 @@ export {
     createResetToken,
     validateResetToken,
 } from "./ResetToken.js";
+export { Avatar } from "./Avatar.js";
 
 export { Income, Expense } from "./income_expenses.js";
 export { Category } from "./category.js";

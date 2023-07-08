@@ -1,24 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Image, Grid, Segment } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import "../style/home.css";
-import kreditcardbluefinal from "../images/kreditcardbluefinal.png"; 
+import kreditcardbluefinal from "../images/kreditcardbluefinal.png";
 import income from "../images/income.png";
 import expense from "../images/expense.png";
 import monthly from "../images/monthly.png";
-import profil_logo from "../images/profil_logo.svg";
+//import profil_logo from "../images/profil_logo.svg";
 import Footernavbar from "./transaction/footernav.jsx";
+import { User } from "../../../back-end/model/User.js";
 
-export default function home() {
+export default function Home() {
+    const [userData, setUserData] = useState(null);
+    useEffect(() => {
+        axios
+            .get("/api/users")
+            .then((response) => {
+                setUserData(response.data);
+                console.log("responseDta", response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }, []);
+
     return (
         <div id="home">
             <header className="home_header">
                 <aside>
                     <h1>Welcome back</h1>
-                    <p>Kevin Kasperek</p>
+                    <p>{userData?.name}</p>
+                    {/* {console.log(User.name)} */}
                 </aside>
                 <section>
-                    <img src={profil_logo} alt="profil_logo" />
+                    <img src={userData?.avatar} alt="avatar" />
                 </section>
             </header>
 
