@@ -20,9 +20,6 @@ import { v2 as cloudinary } from "cloudinary";
 import path from "path";
 import { fileURLToPath } from "url";
 
-dotenv.config({ path: new URL("../.env", import.meta.url).pathname });
-
-
 //--------------CLOUDINARY-CONFIG--------------\\
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,

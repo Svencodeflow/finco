@@ -1,5 +1,5 @@
-import crypto from "crypto";
 import mongoose from "mongoose";
+import crypto from "crypto-js";
 
 //--------------USER-SCHEMA--------------\\
 const userSchema = new mongoose.Schema({
