@@ -93,7 +93,7 @@ function transactiontotal() {
                         <div key={item._id}>
                             <p>category: {item.category}</p>
                             <p>amount: {item.amount}</p>
-                            <p>date: {item.date}</p>
+                            <p>date: {new Date(item.Date)}</p>
                             <p>time: {item.time}</p>
                         </div>
                     ))}
