@@ -11,4 +11,12 @@ export default defineConfig({
       "/api": { target: "http://localhost:3000" },
     },
   },
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+      },
+      external: ['mongoose'],
+    },
+  },
 })
