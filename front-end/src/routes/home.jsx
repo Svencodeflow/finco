@@ -9,7 +9,6 @@ import expense from "../images/expense.png";
 import monthly from "../images/monthly.png";
 //import profil_logo from "../images/profil_logo.svg";
 import Footernavbar from "./transaction/footernav.jsx";
-import { User } from "../../../back-end/model/User.js";
 
 export default function Home() {
     const [userData, setUserData] = useState(null);
