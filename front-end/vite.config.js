@@ -11,4 +11,9 @@ export default defineConfig({
       "/api": { target: "http://localhost:3000" },
     },
   },
+  build: {
+    rollupOptions: {
+      external: ['mongoose', 'crypto-js'],
+    },
+  },
 })
