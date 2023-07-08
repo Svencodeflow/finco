@@ -24,6 +24,13 @@
     margin-top: 20px;
 }
 
+.income_title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .income_title img {
     width: 370px;
     height: 215px;

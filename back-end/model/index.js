@@ -1,6 +1,4 @@
-import dotenv from "dotenv";
 import mongoose from "mongoose";
-import { fileURLToPath } from "url";
 export default mongoose;
 
 export { User } from "./User.js";
@@ -12,9 +10,25 @@ export {
 } from "./ResetToken.js";
 export { Avatar } from "./Avatar.js";
 
-export { income, expense } from "./income_expenses.js";
+export { Income, Expense } from "./income_expenses.js";
 export { Category } from "./category.js";
+export { ReactAppIndex } from "../config/config.js";
 
-// dotenv.config({ path: new URL("../../.env", import.meta.url).pathname });
+mongoose.connect(process.env.DB, { useNewUrlParser: true, useUnifiedTopology: true, serverSelectionTimeoutMS: 30000 })
+  .then(() => {
+    console.log('Connected to MongoDB');
+  })
+  .catch((error) => {
+    console.error('Failed to connect to MongoDB:', error);
+  });
 
-mongoose.connect(process.env.DB);
+console.log("process.env.DB", process.env.DB);
+
+const db = mongoose.connection;
+
+db.on("error", (err) => {
+    console.error("MongoDB connection error:", err);
+});
+db.once("open", () => {
+    console.log("Connected to MongoDB");
+});

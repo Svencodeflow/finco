@@ -5,6 +5,7 @@ import home from "../../images/home.svg";
 import alltransact from "../../images/credit-card.svg";
 import report from "../../images/pie-chart.svg";
 import "../../style/addtransacc.css";
+import "../../style/footernav.css";
 
 export default function Addtransaction() {
     return (

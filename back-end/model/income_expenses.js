@@ -41,5 +41,5 @@ app.post("/expense", async (req, res) => {
     }
 });
 
-export const income = mongoose.model("income", incomeSchema);
-export const expense = mongoose.model("expense", expenseSchema);
+export const Income = mongoose.model("income", incomeSchema);
+export const Expense = mongoose.model("expense", expenseSchema);

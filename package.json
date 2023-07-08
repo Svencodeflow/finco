@@ -6,6 +6,9 @@
         "start": "npm run build --prefix front-end && npm start --prefix back-end"
     },
     "dependencies": {
+        "@emotion/react": "^11.11.1",
+        "@emotion/styled": "^11.11.0",
+        "@mui/joy": "^5.0.0-alpha.86",
         "axios": "^1.4.0",
         "concurrently": "^8.2.0",
         "react-router-dom": "^6.14.1",
@@ -13,5 +16,4 @@
         "semantic-ui-css": "^2.5.0",
         "semantic-ui-react": "^2.1.4"
     }
-
 }
