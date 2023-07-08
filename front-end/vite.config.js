@@ -14,7 +14,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html'),
+        main: '/opt/render/project/src/front-end/index.html',
       },
       external: ['mongoose'],
     },
