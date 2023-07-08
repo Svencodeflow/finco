@@ -14,14 +14,6 @@ import { v2 as cloudinary } from "cloudinary";
 import path from "path";
 import { fileURLToPath } from "url";
 
-// const ReactAppIndex = path.join(
-//     new URL(process.env.PATHNAME, import.meta.url)
-// );
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const ReactAppIndex = path.join(__dirname, process.env.PATHNAME);
-
 dotenv.config({ path: new URL("../.env", import.meta.url).pathname });
 
 //--------------CLOUDINARY-CONFIG--------------\\
@@ -53,6 +45,25 @@ app.use(cookieParser());
 
 app.get("/api/status", (req, res) => {
     res.send({ status: "Ok" });
+});
+
+//--------------USER--------------\\
+// This is the GET endpoint for the user's profile info.
+// We use the authenticateToken middleware to verify the user's token
+// and ensure that they are logged in.
+app.get("/api/users", authenticateToken, async (req, res) => {
+
+    // We use the user's email address to find them in the database.
+    // This was added to the token in the signInUser function.
+    const user = await User.findOne({ email: req.userEmail });
+
+    // If the user is not found, we return a 404 error.
+    if (!user) {
+        return res.status(404).json({ message: "User not found" });
+    };
+
+    // If the user is found, then we return their profile info.
+    res.json(user);
 });
 
 //--------------SIGNUP--------------\\
@@ -175,22 +186,38 @@ app.post("/api/setpassword", async (req, res) => {
 });
 
 //--------------UPLOAD-AVATAR--------------\\
-app.post(
-    "/api/upload/avatar",
+// POST /api/upload/avatar
+app.post("/api/upload/avatar",
     authenticateToken,
     upload.single("avatar"),
     async (req, res) => {
         try {
+            // Convert the image data to a base64-encoded string
             const b64 = Buffer.from(req.file.buffer).toString("base64");
+
+            // Create a data URI from the base64-encoded string and the file's mimetype
             let dataURI = "data:" + req.file.mimetype + ";base64," + b64;
+
+            // Upload the image to Cloudinary
             const cldRes = await handleUpload(dataURI);
+
+            // Get the secure_url property from the response
+            const avatar_url = cldRes.secure_url;
+
+            // Get the email from the token
+            const user = await User.findOne({ email: req.userEmail });
+
+            // Save the avatar_url to the user's document in the database
+            user.avatar = avatar_url;
+            await user.save();
+
+            // Send the Cloudinary response to the client
             res.json(cldRes);
         } catch (error) {
+            // Send error response to client
             console.log(error);
-            res.status(500).send({
-                message: error.message,
-            });
-        }
+            res.status(500).send({ message: error.message, });
+        };
     }
 );
 
@@ -304,7 +331,6 @@ app.post("/api/incomes", authenticateToken, async (req, res) => {
         await newIncome.save();
         res.json(newIncome);
     } catch (err) {
-        console.error(err);
         res.status(500).json({ message: "Internal server error" });
     }
 });
@@ -344,9 +370,9 @@ app.put("/api/incomes/:id", authenticateToken, async (req, res) => {
     }
 });
 
-app.get("/*", (req, res) => {
-    res.sendFile(ReactAppIndex);
-});
+/* app.get("/*", (req, res) => {
+  res.sendFile(ReactAppIndex);
+}); */
 
 app.listen(PORT, () => {
     console.log("Server running on Port: ", PORT);
