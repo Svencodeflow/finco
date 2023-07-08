@@ -6,30 +6,30 @@ import "./index.css";
 import Root from "./routes/root";
 
 // Onboarding Screens
-import Splash from "./routes/onboard/splash";
+import Splash from "./routes/onboard/splash.jsx";
 import Onboard1 from "./routes/onboard/Onboard1.jsx";
 import Onboard2 from "./routes/onboard/Onboard2.jsx";
 
 // Login and Register
-import Register from "./routes/login/Register";
-import Login from "./routes/login/Login";
-import Accset from "./routes/login/Accset";
-import Setting from "./routes/Accountsetting";
+import Register from "./routes/login/Register.jsx";
+import Login from "./routes/login/Login.jsx";
+import Accset from "./routes/login/Accset.jsx";
+import Setting from "./routes/Accountsetting.jsx";
 
 // addTransaction Screens
-import Addtransaction from "./routes/addtransaction/Addtransaction";
-import Income from "./routes/addtransaction/Income";
-import Expense from "./routes/addtransaction/Expenses";
+import Addtransaction from "./routes/addtransaction/Addtransaction.jsx";
+import Income from "./routes/addtransaction/Income.jsx";
+import Expense from "./routes/addtransaction/Expenses.jsx";
 
 // transactiontotal Screens
-import Home from "./routes/home";
-import Reports from "./routes/reports";
+import Home from "./routes/home.jsx";
+import Reports from "./routes/reports.jsx";
 
 // Seach Screens
-import Onlysearch from "./routes/transaction/onlysearch";
-import Searchtransaction from "./routes/transaction/searchtransaction";
-import Transactiontotal from "./routes/transaction/transactiontotal";
-import Footernav from "./routes/transaction/footernav";
+import Onlysearch from "./routes/transaction/onlysearch.jsx";
+import Searchtransaction from "./routes/transaction/searchtransaction.jsx";
+import Transactiontotal from "./routes/transaction/transactiontotal.jsx";
+import Footernav from "./routes/transaction/footernav.jsx";
 
 const router = createBrowserRouter([
     {
@@ -118,9 +118,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <RouterProvider router={router} />
 );
 
-export default function main() {
-    return (
-        // use the router as the root element of your app
-        <div className="main">{router}</div>
-    );
-}
+// export default function main() {
+//     return (
+//         // use the router as the root element of your app
+//         <div className="main">{router}</div>
+//     );
+// }
