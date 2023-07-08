@@ -12,7 +12,7 @@ export { Avatar } from "./Avatar.js";
 
 export { Income, Expense } from "./income_expenses.js";
 export { Category } from "./category.js";
-export { ReactAppIndex } from "../config/config.js";
+export { ReactAppIndex, ReactAppDistPath } from "../config/config.js";
 
 mongoose.connect(process.env.DB, { useNewUrlParser: true, useUnifiedTopology: true, serverSelectionTimeoutMS: 30000 })
   .then(() => {

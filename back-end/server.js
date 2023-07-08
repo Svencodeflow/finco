@@ -6,7 +6,6 @@ import {
     createResetToken,
     validateResetToken,
     Category,
-    ReactAppIndex,
     Income,
     Expense,
 } from "./model/index.js";
@@ -19,6 +18,11 @@ import { v2 as cloudinary } from "cloudinary";
 
 import path from "path";
 import { fileURLToPath } from "url";
+
+
+const ReactAppDistPath = new URL("../front-end/dist/", import.meta.url);
+const ReactAppIndex = new URL("../front-end/dist/index.html", import.meta.url);
+
 
 //--------------CLOUDINARY-CONFIG--------------\\
 cloudinary.config({
@@ -46,6 +50,9 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(express.static(ReactAppDistPath.pathname));
+
+
 
 app.get("/api/status", (req, res) => {
     res.send({ status: "Ok" });

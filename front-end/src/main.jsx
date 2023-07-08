@@ -34,8 +34,14 @@ import Footernav from "./routes/transaction/footernav.jsx";
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Home />,
+        element: <Root />,
         errorElement: <ErrorPage />,
+        children: [
+            {
+                index: true,
+                element: <Home />,
+            },
+        ],
     },
     {
         path: "/splash",
