@@ -20,8 +20,8 @@ import { TimeField } from "@mui/x-date-pickers/TimeField";
 import moment from "moment";
 
 export default function Income() {
-    const [touchStart, setTouchStart] = useState(0);
-    const [touchEnd, setTouchEnd] = useState(0);
+    const [touchStart, setTouchStart] = useState(null);
+    const [touchEnd, setTouchEnd] = useState(null);
     const [income, setIncome] = useState([]);
     const [amount, setAmount] = useState("");
     const [time, setTime] = useState(dayjs("15:30"));

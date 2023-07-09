@@ -10,7 +10,7 @@ const Search = ({ setShowResult = () => {} }) => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(
-                    `http://localhost:3000/api/products?search=${search}`
+                    `api/products?search=${search}`
                 );
                 setFiltered(response.data);
             } catch (error) {

@@ -1,24 +1,22 @@
 import React from "react";
 import { useState, useEffect } from "react";
-
 import { Link } from "react-router-dom";
+import { Image } from "semantic-ui-react";
 
-import {
-    Image,
-} from "semantic-ui-react";
-import "semantic-ui-css/semantic.min.css";
-import "../../style/transactiontotal.css";
+// Image imports
 import Logo from "../../images/Logo.svg";
-import profil_logo from "../../images/profil_logo.svg";
+import profil_logo from "../../images/profilpic.png";
 import income from "../../images/income.png";
 import expense from "../../images/expense.png";
 import Date from "../../images/date.png";
 import Search from "../../images/Search.png";
-
 import home from "../../images/home.svg";
-import alltransact from "../../images/credit-card.svg";
 import trans from "../../images/plus-circle.svg";
 import report from "../../images/pie-chart.svg";
+
+// CSS imports
+import "semantic-ui-css/semantic.min.css";
+import "../../style/transactiontotal.css";
 
 function transactiontotal() {
     const [transaction, setTransaction] = useState([]);
@@ -55,7 +53,9 @@ function transactiontotal() {
                                     <img src={Date} alt="Date" />
                                 </button>
                                 <button className="seacabutton">
-                                    <img src={Search} alt="Search" />
+                                    <Link to="/onlysearch">
+                                        <img src={Search} alt="Search" />
+                                    </Link>
                                 </button>
                             </div>
                         </div>
