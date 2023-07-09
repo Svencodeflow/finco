@@ -8,7 +8,7 @@ export default defineConfig({
     server: {
         port: 3500,
         proxy: {
-            "/api": { target: "https://finco-ac0p.onrender.com" },
+            "/api": { target: "http://localhost:10000" },
         },
     },
 });
