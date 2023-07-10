@@ -19,8 +19,11 @@ import { v2 as cloudinary } from "cloudinary";
 import path from "path";
 import { fileURLToPath } from "url";
 
-const ReactAppDistPath = new URL("../front-end/dist/", import.meta.url);
-const ReactAppIndex = new URL("../front-end/dist/index.html", import.meta.url);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const ReactAppDistPath = path.join(__dirname, "../front-end/dist/");
+const ReactAppIndex = path.join(__dirname, "../front-end/dist/index.html");
+const rootPath = path.join(__dirname, "../front-end/dist");
 
 //--------------CLOUDINARY-CONFIG--------------\\
 cloudinary.config({
@@ -48,7 +51,8 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(express.static(ReactAppDistPath.pathname));
+
+app.use(express.static(rootPath));
 
 app.get("/api/status", (req, res) => {
     res.send({ status: "Ok" });
@@ -392,7 +396,7 @@ app.get("/api/transactions", async (req, res) => {
 });
 
 app.get("/*", (req, res) => {
-    res.sendFile(ReactAppIndex);
+    res.sendFile(path.join(rootPath, "index.html"));
 });
 
 app.listen(PORT, () => {

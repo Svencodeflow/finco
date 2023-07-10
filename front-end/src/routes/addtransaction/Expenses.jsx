@@ -11,8 +11,8 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { TimeField } from "@mui/x-date-pickers/TimeField";
-import Select from "@mui/joy/Select";
-import Option from "@mui/joy/Option";
+import { Select, MenuItem } from "@mui/material";
+import { InputLabel } from "@mui/material";
 import dayjs from "dayjs";
 import moment from "moment";
 
@@ -25,6 +25,7 @@ export default function Expenses() {
     const [date, setDate] = useState(dayjs("17-04-2022"));
     const [categoryList, setCategoryList] = useState([]);
     const [category, setCategory] = useState("");
+    const [selectedValue, setSelectedValue] = useState("");
     const [formattedDate, setFormattedDate] = useState("");
 
     const navigate = useNavigate();
@@ -55,6 +56,11 @@ export default function Expenses() {
             const data = await response.json();
             setCategoryList(Array.isArray(data) ? data : []);
             console.log(data);
+
+            // Set default value based on first option
+            if (Array.isArray(data) && data.length > 0) {
+                setCategory(data[0].title);
+            }
         }
         fetchCategories();
     }, []);
@@ -99,8 +105,8 @@ export default function Expenses() {
         }
     };
 
-    const handleChange = (selectedCategory) => {
-        setCategory(selectedCategory);
+    const handleChange = (event) => {
+        setSelectedValue(event.target.value);
     };
 
     useEffect(() => {
@@ -157,20 +163,20 @@ export default function Expenses() {
                         </Input>
                     </div>
                     <div className="expenses_category">
+                        <InputLabel id="demo-simple-select-label">
+                            Categories
+                        </InputLabel>
                         <Select
-                            color="primary"
-                            disabled={false}
-                            placeholder="Category"
-                            size="lg"
-                            variant="outlined"
-                            value={category}
-                            label="Category"
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={selectedValue}
+                            label="Categories"
                             onChange={handleChange}
                         >
                             {options.map((option) => (
-                                <Option key={option.key} value={option.value}>
+                                <MenuItem key={option.key} value={option.value}>
                                     {option.text}
-                                </Option>
+                                </MenuItem>
                             ))}
                         </Select>
                     </div>

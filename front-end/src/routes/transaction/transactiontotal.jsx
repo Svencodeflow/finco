@@ -8,7 +8,7 @@ import Logo from "../../images/Logo.svg";
 import profil_logo from "../../images/profilpic.png";
 import income from "../../images/income.png";
 import expense from "../../images/expense.png";
-import Date from "../../images/date.png";
+import DateImage from "../../images/date.png";
 import Search from "../../images/Search.png";
 import home from "../../images/home.svg";
 import trans from "../../images/plus-circle.svg";
@@ -50,7 +50,7 @@ function transactiontotal() {
                             <h1> All Transaction</h1>
                             <div className="button">
                                 <button className="seacabutton">
-                                    <img src={Date} alt="Date" />
+                                    <img src={DateImage} alt="Date" />
                                 </button>
                                 <button className="seacabutton">
                                     <Link to="/onlysearch">
@@ -83,10 +83,10 @@ function transactiontotal() {
             <div>
                 <div className="transacc-footer-item">
                     {transaction.map((item) => (
-                        <div key={item._id}>
+                        <div key={item._id} className="rumsdidums">
                             <p>category: {item.category}</p>
                             <p>amount: {item.amount}</p>
-                            <p>date: {new Date(item.Date)}</p>
+                            <p>date: {item.Date}</p>
                             <p>time: {item.time}</p>
                         </div>
                     ))}

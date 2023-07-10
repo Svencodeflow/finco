@@ -24,8 +24,8 @@ export default function Income() {
     const [touchEnd, setTouchEnd] = useState(null);
     const [income, setIncome] = useState([]);
     const [amount, setAmount] = useState("");
-    const [time, setTime] = useState(dayjs("15:30"));
-    const [date, setDate] = useState(dayjs("17-04-2022"));
+    const [time, setTime] = useState("");
+    const [date, setDate] = useState("");
     const [formattedDate, setFormattedDate] = useState("");
     const [categoryList, setCategoryList] = useState([]);
     const [category, setCategory] = useState([]);
@@ -59,37 +59,29 @@ export default function Income() {
     //TODO: Datenbank Cate
 
     useEffect(() => {
-        const fetchCategories = async () => {
-            try {
-                const response = await axios.get("/api/categories/incoming");
-                const data = response.data;
-                setCategoryList(Array.isArray(data) ? data : []);
-                console.log(data);
-            } catch (error) {
-                console.error(error);
-            }
-        };
-
+        async function fetchCategories() {
+            const response = await fetch("/api/categories/incoming");
+            const data = await response.json();
+            setCategoryList(Array.isArray(data) ? data : []);
+            console.log(data);
+        }
         fetchCategories();
     }, []);
 
-    const options = categoryList.map((incoming) => ({
-        key: incoming._id,
-        value: incoming.title,
-        text: incoming.title,
+    const options = categoryList.map((income) => ({
+        key: income._id,
+        value: income.title,
+        text: income.title,
     }));
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const formattedDate = moment(date).utcOffset(0).format("DD-MM-YYYY"); // Datum im gewünschten Format formatieren
-        console.log("Formatted Date:", formattedDate);
-
         const newIncome = {
             amount: amount,
             category: category,
             time: time,
-            date: moment(date).utcOffset(0).toDate(), // Das Datum mit der UTC-Offset speichern
+            date: date,
         };
 
         try {

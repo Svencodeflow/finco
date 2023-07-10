@@ -1,15 +1,13 @@
 import mongoose from "mongoose";
-import crypto from "crypto-js";
+import crypto from "crypto";
 
 //--------------USER-SCHEMA--------------\\
 const userSchema = new mongoose.Schema({
-
-  name: { type: String, required: true },
-  email: { type: String, required: true, unique: true, lowercase: true },
-  salt: { type: String, required: true, select: false },
-  hash: { type: String, required: true, select: false },
-  avatar: { type: String }, 
-
+    name: { type: String, required: true },
+    email: { type: String, required: true, unique: true, lowercase: true },
+    salt: { type: String, required: true, select: false },
+    hash: { type: String, required: true, select: false },
+    avatar: { type: String },
 });
 
 //--------------SET-PASSWORD--------------\\
