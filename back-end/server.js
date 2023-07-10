@@ -19,10 +19,8 @@ import { v2 as cloudinary } from "cloudinary";
 import path from "path";
 import { fileURLToPath } from "url";
 
-
 const ReactAppDistPath = new URL("../front-end/dist/", import.meta.url);
 const ReactAppIndex = new URL("../front-end/dist/index.html", import.meta.url);
-
 
 //--------------CLOUDINARY-CONFIG--------------\\
 cloudinary.config({
@@ -52,8 +50,6 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(ReactAppDistPath.pathname));
 
-
-
 app.get("/api/status", (req, res) => {
     res.send({ status: "Ok" });
 });
@@ -63,7 +59,6 @@ app.get("/api/status", (req, res) => {
 // We use the authenticateToken middleware to verify the user's token
 // and ensure that they are logged in.
 app.get("/api/users", authenticateToken, async (req, res) => {
-
     // We use the user's email address to find them in the database.
     // This was added to the token in the signInUser function.
     const user = await User.findOne({ email: req.userEmail });
@@ -71,7 +66,7 @@ app.get("/api/users", authenticateToken, async (req, res) => {
     // If the user is not found, we return a 404 error.
     if (!user) {
         return res.status(404).json({ message: "User not found" });
-    };
+    }
 
     // If the user is found, then we return their profile info.
     res.json(user);
@@ -199,7 +194,8 @@ app.post("/api/setpassword", async (req, res) => {
 
 //--------------UPLOAD-AVATAR--------------\\
 // POST /api/upload/avatar
-app.post("/api/upload/avatar",
+app.post(
+    "/api/upload/avatar",
     authenticateToken,
     upload.single("avatar"),
     async (req, res) => {
@@ -228,8 +224,8 @@ app.post("/api/upload/avatar",
         } catch (error) {
             // Send error response to client
             console.log(error);
-            res.status(500).send({ message: error.message, });
-        };
+            res.status(500).send({ message: error.message });
+        }
     }
 );
 
@@ -381,7 +377,6 @@ app.put("/api/incomes/:id", authenticateToken, async (req, res) => {
         res.status(500).json({ message: "Internal server error" });
     }
 });
-
 
 app.get("/api/transactions", async (req, res) => {
     try {

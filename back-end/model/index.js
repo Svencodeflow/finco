@@ -14,23 +14,7 @@ export { Income, Expense } from "./income_expenses.js";
 export { Category } from "./category.js";
 export { ReactAppIndex, ReactAppDistPath } from "../config/config.js";
 
-mongoose
-    .connect(
-        "mongodb+srv://schlaakboot:PTxx3ThzhU48G1ly@cluster0.4ebigbt.mongodb.net/finco",
-        {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            serverSelectionTimeoutMS: 30000,
-        }
-    )
-    .then(() => {
-        console.log("Connected to MongoDB");
-    })
-    .catch((error) => {
-        console.error("Failed to connect to MongoDB:", error);
-    });
-
-console.log("process.env.DB", process.env.DB);
+mongoose.connect(process.env.DB);
 
 const db = mongoose.connection;
 
